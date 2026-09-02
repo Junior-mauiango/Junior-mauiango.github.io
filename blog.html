@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Eliott's blog — thoughts on UI/UX design, frontend development and freelancing." name="description"/>
+<meta content="Eliott" name="author"/>
+<meta content="Blog — Eliott" property="og:title"/>
+<meta content="website" property="og:type"/>
+<title>Blog — Eliott</title>
+
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400&amp;family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&amp;display=swap" rel="stylesheet"/>
+
+<link href="style.css" rel="stylesheet"/>
+</head>
+
+<body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-body antialiased">
+
+<!-- NAV -->
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+<nav aria-label="Main navigation" class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+
+<a aria-label="Back to home" class="font-display font-bold text-xl tracking-tight z-10" href="index.html">
+<span class="text-zinc-900 dark:text-white">eli</span><span class="text-accent">ott</span>
+</a>
+
+<ul class="hidden md:flex items-center gap-8 text-sm font-medium" role="list">
+<li><a class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" href="index.html#services">Services</a></li>
+<li><a class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" href="projects.html">Work</a></li>
+<li><a class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" href="index.html#about">About</a></li>
+<li><a class="nav-link text-accent font-medium" href="blog.html" style="--tw-text-opacity:1">Blog</a></li>
+<li><a class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" href="index.html#contact">Contact</a></li>
+</ul>
+
+<div class="flex items-center gap-3">
+
+<button class="w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
+<svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+
+<svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+
+<a class="hidden md:inline-flex items-center gap-2 btn-primary bg-accent text-white text-sm font-medium px-5 py-2 rounded-full hover:bg-accent-light transition-colors" href="index.html#contact">
+Hire me
+<svg aria-hidden="true" class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</a>
+
+<button aria-label="Toggle menu" class="md:hidden w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800">
+<svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+
+<svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+
+</div>
+</nav>
+
+<div class="md:hidden bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-900">
+<ul class="flex flex-col px-6 py-4 gap-4 text-sm font-medium" role="list">
+<li><a class="block text-zinc-700 dark:text-zinc-300" href="index.html#services">Services</a></li>
+<li><a class="block text-zinc-700 dark:text-zinc-300" href="projects.html">Work</a></li>
+<li><a class="block text-zinc-700 dark:text-zinc-300" href="index.html#about">About</a></li>
+<li><a class="block text-accent font-medium" href="blog.html">Blog</a></li>
+<li><a class="block text-zinc-700 dark:text-zinc-300" href="index.html#contact">Contact</a></li>
+</ul>
+</div>
+
+</header>
+
+<main>
+
+<!-- HERO BLOG -->
+<section class="pt-36 pb-16 relative overflow-hidden">
+
+<div aria-hidden="true" class="absolute top-0 right-0 w-80 h-80 bg-accent/10 rounded-full blur-3xl pointer-events-none"></div>
+
+<div class="max-w-6xl mx-auto px-6 relative z-10">
+
+<p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Writing</p>
+
+<h1 class="reveal reveal-delay-1 font-display font-bold text-5xl md:text-6xl text-zinc-900 dark:text-white leading-tight mb-4">
+The Blog
+</h1>
+
+<p class="reveal reveal-delay-2 text-lg text-zinc-500 dark:text-zinc-400 max-w-xl leading-relaxed">
+Thoughts on UI/UX design, frontend development, and the realities of full-time freelancing. No fluff.
+</p>
+
+<!-- Filter tags -->
+<div class="reveal reveal-delay-3 flex flex-wrap gap-2 mt-8">
+<button class="text-sm px-4 py-1.5 rounded-full border transition-colors">All</button>
+<button class="text-sm px-4 py-1.5 rounded-full border transition-colors">Design</button>
+<button class="text-sm px-4 py-1.5 rounded-full border transition-colors">Dev</button>
+<button class="text-sm px-4 py-1.5 rounded-full border transition-colors">Freelance</button>
+</div>
+
+</div>
+</section>
+
+<!-- FEATURED ARTICLE -->
+<section class="pb-16">
+
+<div class="max-w-6xl mx-auto px-6">
+
+<a class="reveal group block rounded-3xl overflow-hidden bg-zinc-50 dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors" href="blog-article.html">
+
+<div class="grid md:grid-cols-2">
+
+<div class="photo-frame h-64 md:h-auto">
+<img alt="Why I ditched CSS frameworks" loading="lazy" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=900&amp;q=80"/>
+</div>
+
+<div class="p-8 md:p-12 flex flex-col justify-center">
+
+<div class="flex items-center gap-3 mb-4">
+<span class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full">Design</span>
+<span class="text-xs text-zinc-400">March 8, 2025 · 7 min read</span>
+</div>
+
+<h2 class="font-display font-bold text-2xl md:text-3xl text-zinc-900 dark:text-white mb-4 group-hover:text-accent transition-colors">
+Why I ditched heavy CSS frameworks for Tailwind — and what changed
+</h2>
+
+<p class="text-zinc-500 dark:text-zinc-400 leading-relaxed mb-6">
+After years of fighting specificity wars and unused kilobytes, here's what finally convinced me to make the switch — and the measurable impact it had on both my workflow and my clients' performance scores.
+</p>
+
+<span class="inline-flex items-center gap-1.5 text-sm font-medium text-accent nav-link">Read article →</span>
+
+</div>
+</div>
+
+</a>
+</div>
+
+</section>
+
+<!-- ALL ARTICLES GRID -->
+<section class="pb-24">
+
+<div class="max-w-6xl mx-auto px-6">
+
+<div class="grid md:grid-cols-3 gap-6">
+
+<article class="reveal reveal-delay-1 card group bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+
+<div class="photo-frame w-full h-44">
+<img alt="Design systems" loading="lazy" src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=700&amp;q=80"/>
+</div>
+
+<div class="p-6">
+
+<div class="flex items-center gap-3 mb-3">
+<span class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full">Dev</span>
+<span class="text-xs text-zinc-400">Feb 21, 2025</span>
+</div>
+
+<a href="blog-article.html">
+<h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors">
+Building a design system from scratch in a weekend
+</h3>
+</a>
+
+<p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">
+Tokens, components, docs — the exact process I follow to spin up a coherent design system in 48 hours.
+</p>
+
+<a class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white nav-link" href="blog-article.html">
+Read more →
+</a>
+
+</div>
+</article>
+
+<article class="reveal reveal-delay-2 card group bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+
+<div class="photo-frame w-full h-44">
+<img alt="Freelance lessons" loading="lazy" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=700&amp;q=80"/>
+</div>
+
+<div class="p-6">
+
+<div class="flex items-center gap-3 mb-3">
+<span class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full">Freelance</span>
+<span class="text-xs text-zinc-400">Jan 14, 2025</span>
+</div>
+
+<a href="blog-article.html">
+<h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors">
+5 lessons from my first year of full-time freelancing
+</h3>
+</a>
+
+<p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">
+Contracts, pricing, scope creep, burnout — the things nobody tells you before you go solo.
+</p>
+
+<a class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white nav-link" href="blog-article.html">
+Read more →
+</a>
+
+</div>
+</article>
+
+<article class="reveal reveal-delay-3 card group bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+
+<div class="photo-frame w-full h-44">
+<img alt="Alpine.js article" loading="lazy" src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=700&amp;q=80"/>
+</div>
+
+<div class="p-6">
+
+<div class="flex items-center gap-3 mb-3">
+<span class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full">Dev</span>
+<span class="text-xs text-zinc-400">Dec 3, 2024</span>
+</div>
+
+<a href="blog-article.html">
+<h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors">
+Alpine.js is the jQuery of the modern era — and that's a compliment
+</h3>
+</a>
+
+<p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">
+No build step, no virtual DOM, no config hell. Just sprinkle some behaviour and ship.
+</p>
+
+<a class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white nav-link" href="blog-article.html">
+Read more →
+</a>
+
+</div>
+</article>
+
+<article class="reveal reveal-delay-1 card group bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+
+<div class="photo-frame w-full h-44">
+<img alt="UX laws article" loading="lazy" src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=700&amp;q=80"/>
+</div>
+
+<div class="p-6">
+
+<div class="flex items-center gap-3 mb-3">
+<span class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full">Design</span>
+<span class="text-xs text-zinc-400">Nov 18, 2024</span>
+</div>
+
+<a href="blog-article.html">
+<h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors">
+The 7 UX laws every frontend dev should memorise
+</h3>
+</a>
+
+<p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">
+Fitts's Law, Hick's Law, Jakob's Law — the cognitive science behind every good interface decision.
+</p>
+
+<a class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white nav-link" href="blog-article.html">
+Read more →
+</a>
+
+</div>
+</article>
+
+<article class="reveal reveal-delay-2 card group bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+
+<div class="photo-frame w-full h-44">
+<img alt="Client management" loading="lazy" src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=700&amp;q=80"/>
+</div>
+
+<div class="p-6">
+
+<div class="flex items-center gap-3 mb-3">
+<span class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full">Freelance</span>
+<span class="text-xs text-zinc-400">Oct 30, 2024</span>
+</div>
+
+<a href="blog-article.html">
+<h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors">
+How I manage 3 client projects at once without losing my mind
+</h3>
+</a>
+
+<p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">
+My exact Notion setup, communication rhythms, and the one rule I never break.
+</p>
+
+<a class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white nav-link" href="blog-article.html">
+Read more →
+</a>
+
+</div>
+</article>
+
+<article class="reveal reveal-delay-3 card group bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+
+<div class="photo-frame w-full h-44">
+<img alt="Dark mode article" loading="lazy" src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=700&amp;q=80"/>
+</div>
+
+<div class="p-6">
+
+<div class="flex items-center gap-3 mb-3">
+<span class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full">Dev</span>
+<span class="text-xs text-zinc-400">Oct 5, 2024</span>
+</div>
+
+<a href="blog-article.html">
+<h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors">
+Dark mode done right: beyond just inverting colours
+</h3>
+</a>
+
+<p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">
+Contrast ratios, elevation, shadows — what most dark mode implementations get completely wrong.
+</p>
+
+<a class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white nav-link" href="blog-article.html">
+Read more →
+</a>
+
+</div>
+</article>
+
+</div>
+
+<!-- Pagination -->
+<nav aria-label="Pagination" class="reveal flex items-center justify-center gap-2 mt-14">
+
+<span class="w-9 h-9 flex items-center justify-center rounded-full bg-accent text-white text-sm font-medium">1</span>
+
+<a class="w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:border-accent hover:text-accent transition-colors text-sm" href="#">2</a>
+
+<a class="w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:border-accent hover:text-accent transition-colors text-sm" href="#">3</a>
+
+<span class="text-zinc-400 text-sm px-1">…</span>
+
+<a class="w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:border-accent hover:text-accent transition-colors text-sm" href="#">
+<svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</a>
+
+</nav>
+
+</div>
+</section>
+
+</main>
+
+<footer class="border-t border-zinc-100 dark:border-zinc-900">
+
+<div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+
+<p class="text-sm text-zinc-400">
+© <span id="yr"></span> Eliott. All rights reserved.
+<br/>
+Developed by <a class="font-bold" href="https://lbegey78.gumroad.com/" target="_blank">Laurent Begey</a>
+•
+Distributed by <a class="font-bold" href="https://themewagon.com/" target="_blank">ThemeWagon</a>
+</p>
+
+<p class="text-xs text-zinc-500">
+Built with
+<a class="hover:text-zinc-900 dark:hover:text-white transition-colors" href="https://tailwindcss.com" rel="noopener noreferrer" target="_blank">Tailwind CSS</a>
+&amp;
+<a class="hover:text-zinc-900 dark:hover:text-white transition-colors" href="https://alpinejs.dev" rel="noopener noreferrer" target="_blank">Alpine.js</a>
+</p>
+
+</div>
+
+</footer>
+
+<script defer src="script.js"></script>
+
+</body>
+</html>
