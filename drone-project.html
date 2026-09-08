@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth dark" lang="en">
+
+<head>
+
+<meta charset="utf-8"/>
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+<meta
+  content="STM32-based quadcopter flight-control project by Junior Mauiango featuring IMU-based attitude estimation, PID stabilization, ESC motor control, receiver input, and ongoing flight testing."
+  name="description"
+/>
+
+<meta content="Junior Mauiango" name="author"/>
+
+<title>Quadcopter Flight-Control System — Junior Mauiango</title>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&display=swap"
+  rel="stylesheet"
+/>
+
+<link href="style.css" rel="stylesheet"/>
+
+<script>
+try {
+  const savedTheme = localStorage.getItem("theme");
+
+  if (savedTheme !== "light") {
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
+} catch (error) {
+  document.documentElement.classList.add("dark");
+}
+</script>
+
+</head>
+
+
+<body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-body antialiased">
+
+
+<!-- READING PROGRESS -->
+<div
+  aria-label="Reading progress"
+  aria-valuemax="100"
+  aria-valuemin="0"
+  class="progress-bar"
+  role="progressbar"
+></div>
+
+
+<!-- ═══════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════ -->
+
+<header class="fixed top-0.5 left-0 right-0 z-50 transition-all duration-300">
+
+<nav
+  aria-label="Main navigation"
+  class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between"
+>
+
+<a
+  class="font-display font-bold text-xl tracking-tight z-10"
+  href="index.html"
+>
+<span class="text-zinc-900 dark:text-white">Junior</span>
+<span class="text-accent">Mauiango</span>
+</a>
+
+
+<ul
+  class="hidden md:flex items-center gap-8 text-sm font-medium"
+  role="list"
+>
+
+<li>
+<a
+  class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
+  href="index.html#skills"
+>
+Skills
+</a>
+</li>
+
+<li>
+<a
+  class="nav-link text-accent font-medium"
+  href="projects.html"
+>
+Projects
+</a>
+</li>
+
+<li>
+<a
+  class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
+  href="index.html#experience"
+>
+Experience
+</a>
+</li>
+
+<li>
+<a
+  class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
+  href="index.html#about"
+>
+About
+</a>
+</li>
+
+<li>
+<a
+  class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
+  href="index.html#contact"
+>
+Contact
+</a>
+</li>
+
+</ul>
+
+
+<div class="flex items-center gap-3">
+
+<button
+  aria-label="Toggle color theme"
+  class="w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+>
+
+<svg
+  aria-hidden="true"
+  class="w-4 h-4"
+  fill="none"
+  stroke="currentColor"
+  viewBox="0 0 24 24"
+>
+<path
+  d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+></path>
+</svg>
+
+<svg
+  aria-hidden="true"
+  class="w-4 h-4"
+  fill="none"
+  stroke="currentColor"
+  viewBox="0 0 24 24"
+>
+<path
+  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+></path>
+</svg>
+
+</button>
+
+
+<a
+  class="hidden md:inline-flex items-center gap-2 btn-primary bg-accent text-white text-sm font-medium px-5 py-2 rounded-full hover:bg-accent-light transition-colors"
+  href="index.html#contact"
+>
+Contact me →
+</a>
+
+
+<button
+  aria-label="Toggle menu"
+  class="md:hidden w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800"
+>
+
+<svg
+  aria-hidden="true"
+  class="w-4 h-4"
+  fill="none"
+  stroke="currentColor"
+  viewBox="0 0 24 24"
+>
+<path
+  d="M4 6h16M4 12h16M4 18h16"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+></path>
+</svg>
+
+<svg
+  aria-hidden="true"
+  class="w-4 h-4"
+  fill="none"
+  stroke="currentColor"
+  viewBox="0 0 24 24"
+>
+<path
+  d="M6 18L18 6M6 6l12 12"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+></path>
+</svg>
+
+</button>
+
+</div>
+
+</nav>
+
+
+<!-- MOBILE MENU -->
+
+<div
+  class="md:hidden bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-900"
+>
+
+<ul
+  class="flex flex-col px-6 py-4 gap-4 text-sm font-medium"
+  role="list"
+>
+
+<li>
+<a class="block text-zinc-700 dark:text-zinc-300" href="index.html#skills">
+Skills
+</a>
+</li>
+
+<li>
+<a class="block text-accent font-medium" href="projects.html">
+Projects
+</a>
+</li>
+
+<li>
+<a class="block text-zinc-700 dark:text-zinc-300" href="index.html#experience">
+Experience
+</a>
+</li>
+
+<li>
+<a class="block text-zinc-700 dark:text-zinc-300" href="index.html#about">
+About
+</a>
+</li>
+
+<li>
+<a class="block text-zinc-700 dark:text-zinc-300" href="index.html#contact">
+Contact
+</a>
+</li>
+
+</ul>
+
+</div>
+
+</header>
+
+
+<main>
+
+<article>
+
+
+<!-- ═══════════════════════════════════════
+     PROJECT HEADER
+═══════════════════════════════════════ -->
+
+<header class="pt-32 pb-10 max-w-4xl mx-auto px-6">
+
+<a
+  class="inline-flex items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400 hover:text-accent transition-colors mb-8"
+  href="projects.html"
+>
+
+<svg
+  aria-hidden="true"
+  class="w-4 h-4"
+  fill="none"
+  stroke="currentColor"
+  viewBox="0 0 24 24"
+>
+<path
+  d="M7 16l-4-4m0 0l4-4m-4 4h18"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+></path>
+</svg>
+
+Back to projects
+
+</a>
+
+
+<div class="flex flex-wrap items-center gap-3 mb-6">
+
+<span
+  class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full"
+>
+Embedded Systems
+</span>
+
+<span
+  class="text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-2.5 py-1 rounded-full"
+>
+STM32
+</span>
+
+<span
+  class="text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-2.5 py-1 rounded-full"
+>
+Flight Control
+</span>
+
+<span
+  class="text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-2.5 py-1 rounded-full"
+>
+PID Control
+</span>
+
+<span class="text-xs text-zinc-400 ml-1">
+2026 · In Progress
+</span>
+
+</div>
+
+
+<h1
+  class="reveal font-display font-bold text-4xl md:text-5xl lg:text-6xl text-zinc-900 dark:text-white leading-tight mb-6"
+>
+STM32 Quadcopter Flight-Control System
+</h1>
+
+
+<p
+  class="reveal d1 text-xl text-zinc-500 dark:text-zinc-400 leading-relaxed mb-10 max-w-3xl"
+>
+An embedded quadcopter project built around an STM32 microcontroller,
+combining inertial sensing, attitude estimation, receiver input,
+PID-based stabilization, PWM motor control, and real-world
+propeller-on testing.
+</p>
+
+
+<div
+  class="reveal d2 grid grid-cols-2 md:grid-cols-4 gap-4 py-8 border-t border-b border-zinc-100 dark:border-zinc-900"
+>
+
+<div>
+<p class="text-xs text-zinc-400 uppercase tracking-widest mb-1">
+Controller
+</p>
+<p class="font-medium text-zinc-900 dark:text-white text-sm">
+STM32
+</p>
+</div>
+
+
+<div>
+<p class="text-xs text-zinc-400 uppercase tracking-widest mb-1">
+Sensors
+</p>
+<p class="font-medium text-zinc-900 dark:text-white text-sm">
+IMU
+</p>
+</div>
+
+
+<div>
+<p class="text-xs text-zinc-400 uppercase tracking-widest mb-1">
+Control
+</p>
+<p class="font-medium text-zinc-900 dark:text-white text-sm">
+PID Stabilization
+</p>
+</div>
+
+
+<div>
+<p class="text-xs text-zinc-400 uppercase tracking-widest mb-1">
+Status
+</p>
+<p class="font-medium text-zinc-900 dark:text-white text-sm">
+Testing &amp; Tuning
+</p>
+</div>
+
+</div>
+
+</header>
+
+
+<!-- ═══════════════════════════════════════
+     HERO IMAGE
+═══════════════════════════════════════ -->
+
+<div class="max-w-6xl mx-auto px-6 mb-16">
+
+<div class="reveal photo-frame w-full h-72 md:h-[480px] rounded-3xl">
+
+<img
+  alt="Quadcopter drone flight-control project"
+  loading="eager"
+  src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=1400&q=80"
+/>
+
+</div>
+
+<p class="img-caption">
+STM32-based quadcopter platform being developed for closed-loop attitude stabilization and autonomous safety features.
+</p>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     CURRENT STATUS
+═══════════════════════════════════════ -->
+
+<div class="max-w-4xl mx-auto px-6 mb-16">
+
+<div class="reveal grid grid-cols-2 md:grid-cols-4 gap-4">
+
+<div class="stat-card bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-5 pl-6">
+<p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">
+4
+</p>
+<p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1 leading-snug">
+Brushless motors / ESC channels
+</p>
+</div>
+
+
+<div class="stat-card bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-5 pl-6">
+<p class="font-display font-bold text-3xl text-accent">
+3-axis
+</p>
+<p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1 leading-snug">
+Attitude stabilization
+</p>
+</div>
+
+
+<div class="stat-card bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-5 pl-6">
+<p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">
+PID
+</p>
+<p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1 leading-snug">
+Closed-loop correction
+</p>
+</div>
+
+
+<div class="stat-card bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-5 pl-6">
+<p class="font-display font-bold text-xl text-zinc-900 dark:text-white">
+In Progress
+</p>
+<p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1 leading-snug">
+Propeller-on testing
+</p>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     ARTICLE BODY
+═══════════════════════════════════════ -->
+
+<div class="max-w-3xl mx-auto px-6 pb-4 prose-cs">
+
+
+<h2>Project overview</h2>
+
+<p>
+This project is the development of a custom quadcopter flight-control
+system rather than relying on a prebuilt commercial flight controller.
+The goal is to build the control stack from the microcontroller level
+up, including sensor communication, attitude estimation, pilot input,
+motor output, stabilization, and eventually higher-level safety and
+autonomous functions.
+</p>
+
+<p>
+The project uses an STM32 microcontroller as the primary flight
+controller. The controller reads inertial measurements from the IMU,
+determines the aircraft's orientation, processes pilot commands, and
+continuously adjusts the four motor outputs to oppose unwanted roll,
+pitch, and yaw motion.
+</p>
+
+<p>
+Development has progressed from individual peripheral and motor tests
+to integrated propeller-on stabilization testing. The current focus is
+improving stability under real motor vibration and tuning the control
+response before attempting sustained free flight.
+</p>
+
+
+<h2>System architecture</h2>
+
+<p>
+The quadcopter is organized around a real-time feedback loop. Pilot
+commands provide the desired aircraft behavior, while the IMU provides
+feedback about the aircraft's actual motion. The STM32 compares the
+desired and measured states, calculates corrections, and modifies the
+motor speeds through the ESCs.
+</p>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     CONTROL PIPELINE
+═══════════════════════════════════════ -->
+
+<div class="max-w-5xl mx-auto px-6 mb-12">
+
+<div class="reveal grid md:grid-cols-3 gap-5">
+
+
+<div
+  class="bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800"
+>
+
+<div
+  class="w-10 h-10 bg-orange-50 dark:bg-zinc-800 rounded-xl flex items-center justify-center mb-4"
+>
+
+<svg
+  aria-hidden="true"
+  class="w-5 h-5 text-accent"
+  fill="none"
+  stroke="currentColor"
+  viewBox="0 0 24 24"
+>
+<path
+  d="M12 18.5A6.5 6.5 0 1012 5a6.5 6.5 0 000 13.5zM12 2v3M12 19v3M2 12h3M19 12h3"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+></path>
+</svg>
+
+</div>
+
+<h3
+  class="font-display font-bold text-zinc-900 dark:text-white mb-2"
+  style="font-size:1rem;margin:0 0 .5rem;color:inherit;"
+>
+Sense
+</h3>
+
+<p
+  class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed"
+  style="margin:0;color:inherit;"
+>
+Read accelerometer and gyroscope measurements from the IMU and process
+them into usable flight-state information.
+</p>
+
+</div>
+
+
+<div
+  class="bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800"
+>
+
+<div
+  class="w-10 h-10 bg-orange-50 dark:bg-zinc-800 rounded-xl flex items-center justify-center mb-4"
+>
+
+<svg
+  aria-hidden="true"
+  class="w-5 h-5 text-accent"
+  fill="none"
+  stroke="currentColor"
+  viewBox="0 0 24 24"
+>
+<path
+  d="M9 12l2 2 4-4M12 3a9 9 0 110 18 9 9 0 010-18z"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+></path>
+</svg>
+
+</div>
+
+<h3
+  class="font-display font-bold text-zinc-900 dark:text-white mb-2"
+  style="font-size:1rem;margin:0 0 .5rem;color:inherit;"
+>
+Calculate
+</h3>
+
+<p
+  class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed"
+  style="margin:0;color:inherit;"
+>
+Compare the commanded and measured attitude and calculate stabilization
+corrections using PID control.
+</p>
+
+</div>
+
+
+<div
+  class="bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800"
+>
+
+<div
+  class="w-10 h-10 bg-orange-50 dark:bg-zinc-800 rounded-xl flex items-center justify-center mb-4"
+>
+
+<svg
+  aria-hidden="true"
+  class="w-5 h-5 text-accent"
+  fill="none"
+  stroke="currentColor"
+  viewBox="0 0 24 24"
+>
+<path
+  d="M13 10V3L4 14h7v7l9-11h-7z"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+></path>
+</svg>
+
+</div>
+
+<h3
+  class="font-display font-bold text-zinc-900 dark:text-white mb-2"
+  style="font-size:1rem;margin:0 0 .5rem;color:inherit;"
+>
+Actuate
+</h3>
+
+<p
+  class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed"
+  style="margin:0;color:inherit;"
+>
+Mix the control corrections across four motors and update ESC PWM
+commands to generate the required torque.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<div class="max-w-3xl mx-auto px-6 pb-4 prose-cs">
+
+
+<h2>Hardware</h2>
+
+<p>
+The airframe uses four brushless motors, each driven independently by
+an electronic speed controller. The STM32 produces the control signals
+for the ESCs while the flight battery supplies the propulsion system.
+An IMU mounted near the center of the aircraft provides acceleration
+and angular-rate measurements used by the stabilization loop.
+</p>
+
+<p>
+A radio receiver provides pilot throttle, roll, pitch, and yaw
+commands. These inputs are processed by the STM32 and converted into
+control targets rather than being sent directly to the motors. This
+allows the flight controller to continuously correct the aircraft even
+while responding to pilot input.
+</p>
+
+
+<h2>IMU communication and attitude sensing</h2>
+
+<p>
+One of the first major stages of development was establishing reliable
+communication between the STM32 and the IMU. Accelerometer and
+gyroscope data are read continuously and converted from raw sensor
+values into measurements that can be used by the control system.
+</p>
+
+<p>
+Sensor calibration is important because even a stationary IMU can
+contain offsets that would otherwise appear to the controller as real
+motion. Calibration and filtering are therefore used before the
+measurements enter the stabilization system.
+</p>
+
+<p>
+The processed accelerometer and gyroscope information is then used for
+attitude estimation. Gyroscope measurements provide fast rotational
+response, while accelerometer information provides a longer-term
+reference for roll and pitch.
+</p>
+
+
+<h2>Motor and ESC control</h2>
+
+<p>
+Each of the four motors is controlled independently through its ESC.
+The STM32 generates PWM output signals that command the ESCs, allowing
+the software to vary each motor's speed independently.
+</p>
+
+<p>
+Independent motor control is essential because a quadcopter does not
+use conventional control surfaces. Roll, pitch, and yaw are produced
+by deliberately changing the thrust generated by different motors.
+The flight controller therefore converts stabilization corrections
+into four individual motor commands through a motor-mixing stage.
+</p>
+
+
+<h2>PID stabilization</h2>
+
+<p>
+The stabilization controller calculates the difference between the
+desired state and the measured state. A PID controller then converts
+that error into a correction that can be applied to the motors.
+</p>
+
+<p>
+The proportional term responds directly to the current error. The
+integral term can compensate for persistent bias, while the derivative
+term can help oppose rapid changes and improve damping. These terms
+must be tuned carefully because an aggressive controller can cause
+oscillation while a controller with insufficient gain may respond too
+slowly to disturbances.
+</p>
+
+<p>
+The resulting roll, pitch, and yaw corrections are combined with the
+base throttle command through the motor mixer. Depending on the
+direction of the required correction, some motors are accelerated
+while others are reduced.
+</p>
+
+
+<h2>From bench testing to propellers</h2>
+
+<p>
+Development was performed incrementally rather than assembling the
+entire aircraft and immediately attempting flight. Individual motor
+control was verified first, followed by sensor readings, receiver
+input, attitude estimation, and stabilization behavior.
+</p>
+
+<p>
+A particularly important test was verifying the direction of the
+feedback correction. When the aircraft is manually tilted in one
+direction, the controller must change the appropriate motor outputs to
+generate torque in the opposite direction. An incorrect sign or motor
+mapping can make the controller amplify a disturbance instead of
+correcting it.
+</p>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     DEVELOPMENT PROGRESS
+═══════════════════════════════════════ -->
+
+<div class="max-w-4xl mx-auto px-6 mb-12">
+
+<div class="reveal space-y-4">
+
+
+<div
+  class="flex gap-5 bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800"
+>
+
+<div class="step-badge shrink-0 mt-0.5">1</div>
+
+<div>
+<p class="font-display font-bold text-zinc-900 dark:text-white mb-1">
+Motor &amp; ESC control
+</p>
+
+<p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
+Configured PWM motor outputs and verified independent control of the
+four ESC and brushless-motor channels.
+</p>
+</div>
+
+</div>
+
+
+<div
+  class="flex gap-5 bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800"
+>
+
+<div class="step-badge shrink-0 mt-0.5">2</div>
+
+<div>
+<p class="font-display font-bold text-zinc-900 dark:text-white mb-1">
+IMU integration
+</p>
+
+<p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
+Integrated inertial sensing, sensor calibration, and processing of
+accelerometer and gyroscope measurements.
+</p>
+</div>
+
+</div>
+
+
+<div
+  class="flex gap-5 bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800"
+>
+
+<div class="step-badge shrink-0 mt-0.5">3</div>
+
+<div>
+<p class="font-display font-bold text-zinc-900 dark:text-white mb-1">
+Receiver input
+</p>
+
+<p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
+Added radio receiver input so pilot throttle and attitude commands can
+be interpreted by the flight controller.
+</p>
+</div>
+
+</div>
+
+
+<div
+  class="flex gap-5 bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800"
+>
+
+<div class="step-badge shrink-0 mt-0.5">4</div>
+
+<div>
+<p class="font-display font-bold text-zinc-900 dark:text-white mb-1">
+Attitude estimation &amp; PID
+</p>
+
+<p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
+Implemented attitude feedback and PID-based correction, then combined
+the controller outputs with throttle through the four-motor mixer.
+</p>
+</div>
+
+</div>
+
+
+<div
+  class="flex gap-5 bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-6 border border-accent/40"
+>
+
+<div class="step-badge shrink-0 mt-0.5">5</div>
+
+<div>
+<p class="font-display font-bold text-zinc-900 dark:text-white mb-1">
+Current — propeller-on stabilization testing
+</p>
+
+<p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
+Testing the complete control loop with propellers installed. Current
+work is focused on vibration sensitivity, motor-output oscillation,
+PID tuning, and a tendency for the aircraft to roll toward one side as
+motor speed increases.
+</p>
+</div>
+
+</div>
+
+
+<div
+  class="flex gap-5 bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800"
+>
+
+<div class="step-badge shrink-0 mt-0.5">6</div>
+
+<div>
+<p class="font-display font-bold text-zinc-900 dark:text-white mb-1">
+Next — controlled flight testing
+</p>
+
+<p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
+After the stabilization response is sufficiently predictable, the next
+stage is controlled low-altitude testing followed by further tuning
+using actual flight behavior.
+</p>
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     CURRENT ENGINEERING CHALLENGE
+═══════════════════════════════════════ -->
+
+<div class="max-w-3xl mx-auto px-6 pb-4 prose-cs">
+
+<h2>Current engineering challenge</h2>
+
+<p>
+The largest difference between the earlier bench tests and the current
+propeller-on tests is vibration. With the propulsion system running,
+the IMU is exposed to mechanical vibration from the motors, propellers,
+frame, and mounting structure. These disturbances can enter the sensor
+measurements and cause the estimated attitude and PID corrections to
+fluctuate.
+</p>
+
+<p>
+During current testing, motor commands fluctuate more as throttle is
+increased, and the aircraft has shown a tendency to roll toward the
+right. The cause is still being investigated rather than treated as a
+solved problem.
+</p>
+
+<p>
+The debugging process involves separating possible software and
+hardware causes: PID gains, sensor noise, IMU mounting, frame
+vibration, motor/propeller balance, motor direction, motor mixing,
+thrust differences, and the aircraft's physical weight distribution.
+This stage is providing the transition from a controller that behaves
+correctly in software to one that remains stable on a real airframe.
+</p>
+
+
+<h2>Safety and arming</h2>
+
+<p>
+Safety is a major part of the flight-controller design because
+incorrect motor commands can immediately become hazardous once
+propellers are installed. Motor output is therefore being developed
+alongside arming and safe-state behavior rather than treating safety
+as a feature to add only after flight control is complete.
+</p>
+
+<p>
+The longer-term design also includes failsafe behavior for conditions
+such as communication loss and low battery voltage. The intended goal
+is for these conditions to trigger controlled descent behavior instead
+of allowing the aircraft to continue operating without a valid control
+link or adequate battery capacity.
+</p>
+
+
+<h2>Planned development</h2>
+
+<p>
+The immediate priority is achieving stable manual flight and tuning the
+attitude controller. Higher-level functionality will be added only
+after the fundamental stabilization loop is reliable.
+</p>
+
+<ul>
+<li>
+<strong>PID tuning:</strong> refine roll, pitch, and yaw response under
+real flight conditions.
+</li>
+
+<li>
+<strong>Vibration reduction:</strong> improve the quality of IMU
+measurements during higher motor speeds.
+</li>
+
+<li>
+<strong>Stable hover:</strong> progress from restrained testing to
+controlled low-altitude flight.
+</li>
+
+<li>
+<strong>Altitude sensing:</strong> integrate pressure-based altitude
+measurement after attitude stabilization is reliable.
+</li>
+
+<li>
+<strong>Altitude hold:</strong> develop a closed-loop vertical control
+system capable of maintaining a target altitude.
+</li>
+
+<li>
+<strong>Battery monitoring:</strong> monitor LiPo voltage and provide
+the flight controller with battery-state information.
+</li>
+
+<li>
+<strong>Communication-loss failsafe:</strong> detect loss of valid
+pilot commands and transition the aircraft into a safe response.
+</li>
+
+<li>
+<strong>Low-battery landing:</strong> develop controlled descent
+behavior when battery voltage reaches a defined safety threshold.
+</li>
+</ul>
+
+
+<h2>What I am learning</h2>
+
+<p>
+The project combines several areas of embedded engineering in one
+system: microcontroller peripherals, real-time sensor acquisition,
+digital communication, feedback control, power electronics, motor
+control, signal filtering, debugging, and physical system integration.
+</p>
+
+<p>
+One of the most important lessons has been that a control algorithm
+working correctly on the bench does not automatically mean the
+aircraft will be stable. Sensor noise, vibration, motor differences,
+frame dynamics, timing, and controller tuning all interact once the
+propellers are running.
+</p>
+
+<p>
+That makes the current testing stage particularly valuable: the
+project has moved beyond simply getting individual components to work
+and into integrating those components into a complete real-time
+control system.
+</p>
+
+
+<hr/>
+
+
+<p>
+<em>
+This project is actively under development. The page will be updated
+as the aircraft progresses through stabilization tuning, flight
+testing, altitude control, and failsafe development.
+</em>
+</p>
+
+</div>
+
+
+</article>
+
+
+<!-- ═══════════════════════════════════════
+     OTHER PROJECTS
+═══════════════════════════════════════ -->
+
+<section class="bg-zinc-50 dark:bg-zinc-900/50 py-16">
+
+<div class="max-w-6xl mx-auto px-6">
+
+<div class="flex items-center justify-between mb-8">
+
+<h2 class="font-display font-bold text-2xl text-zinc-900 dark:text-white">
+More projects
+</h2>
+
+<a
+  class="text-sm font-medium text-accent nav-link hidden md:block"
+  href="projects.html"
+>
+View all →
+</a>
+
+</div>
+
+
+<div class="grid md:grid-cols-2 gap-6">
+
+
+<!-- CAR -->
+
+<article
+  class="reveal card-h group bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors"
+>
+
+<div class="photo-frame w-full h-44">
+
+<img
+  alt="STM32 Raspberry Pi 4WD vehicle"
+  loading="lazy"
+  src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=700&q=80"
+/>
+
+</div>
+
+<div class="p-5">
+
+<div class="flex gap-2 mb-2">
+
+<span
+  class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full"
+>
+Embedded Systems
+</span>
+
+</div>
+
+<a href="car-project.html">
+
+<h3
+  class="font-display font-bold text-base text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors"
+>
+STM32–Raspberry Pi 4WD Vehicle
+</h3>
+
+</a>
+
+<a
+  class="text-sm font-medium text-accent nav-link"
+  href="car-project.html"
+>
+View project →
+</a>
+
+</div>
+
+</article>
+
+
+<!-- EV RESEARCH -->
+
+<article
+  class="reveal card-h group bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors"
+>
+
+<div class="photo-frame w-full h-44">
+
+<img
+  alt="Electrical power grid"
+  loading="lazy"
+  src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=700&q=80"
+/>
+
+</div>
+
+<div class="p-5">
+
+<div class="flex gap-2 mb-2">
+
+<span
+  class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full"
+>
+Power Systems
+</span>
+
+</div>
+
+<a href="ev-grid-research.html">
+
+<h3
+  class="font-display font-bold text-base text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors"
+>
+EV &amp; V2G Distribution-System Research
+</h3>
+
+</a>
+
+<a
+  class="text-sm font-medium text-accent nav-link"
+  href="ev-grid-research.html"
+>
+View research →
+</a>
+
+</div>
+
+</article>
+
+
+</div>
+
+
+<div class="text-center mt-8 md:hidden">
+
+<a
+  class="text-sm font-medium text-accent"
+  href="projects.html"
+>
+View all projects →
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     CTA
+═══════════════════════════════════════ -->
+
+<section class="py-24">
+
+<div class="max-w-6xl mx-auto px-6">
+
+<div
+  class="bg-zinc-900 dark:bg-zinc-800 rounded-3xl p-10 md:p-14 text-center relative overflow-hidden"
+>
+
+<div
+  aria-hidden="true"
+  class="absolute top-0 right-0 w-64 h-64 bg-accent/20 rounded-full blur-3xl pointer-events-none"
+></div>
+
+<div
+  aria-hidden="true"
+  class="absolute bottom-0 left-0 w-40 h-40 bg-accent/10 rounded-full blur-2xl pointer-events-none"
+></div>
+
+
+<div class="relative z-10">
+
+<p
+  class="text-xs font-medium text-accent tracking-widest uppercase mb-4"
+>
+Interested in my work?
+</p>
+
+<h2
+  class="font-display font-bold text-3xl md:text-4xl text-white mb-4"
+>
+Let's connect.
+</h2>
+
+<p class="text-zinc-400 max-w-lg mx-auto mb-8">
+I'm interested in opportunities involving embedded systems,
+hardware, electronics, robotics, power systems, and related
+electrical-engineering work.
+</p>
+
+<a
+  class="inline-flex items-center gap-2 btn-primary bg-accent text-white font-medium px-8 py-3.5 rounded-full hover:bg-accent-light transition-colors"
+  href="index.html#contact"
+>
+Contact me →
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
+
+<footer class="border-t border-zinc-100 dark:border-zinc-900">
+
+<div
+  class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4"
+>
+
+<p class="text-sm text-zinc-400">
+© <span id="year"></span> Junior Mauiango. All rights reserved.
+</p>
+
+<p class="text-xs text-zinc-500">
+Built with HTML, CSS, and JavaScript.
+</p>
+
+</div>
+
+</footer>
+
+
+<script defer src="script.js"></script>
+
+
+</body>
+
+</html>

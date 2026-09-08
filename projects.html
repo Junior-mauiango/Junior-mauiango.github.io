@@ -1,109 +1,289 @@
 <!DOCTYPE html>
 
-<html class="scroll-smooth" lang="en">
+<html class="scroll-smooth dark" lang="en">
+
 <head>
+
 <meta charset="utf-8"/>
+
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+<meta
+  content="Engineering projects by Junior Mauiango covering embedded systems, robotics, analog electronics, hardware development, circuit design, and electrical power systems."
+  name="description"
+/>
+
+<meta content="Junior Mauiango" name="author"/>
+
 <title>Projects — Junior Mauiango</title>
 
-<link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400&amp;family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&amp;display=swap" rel="stylesheet"/>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&display=swap"
+  rel="stylesheet"
+/>
 
 <link href="style.css" rel="stylesheet"/>
+
+
+<!-- Default to dark mode unless user previously selected light -->
+
+<script>
+
+try {
+
+  const savedTheme = localStorage.getItem("theme");
+
+  if (savedTheme !== "light") {
+
+    document.documentElement.classList.add("dark");
+
+  } else {
+
+    document.documentElement.classList.remove("dark");
+
+  }
+
+} catch (error) {
+
+  document.documentElement.classList.add("dark");
+
+}
+
+</script>
+
 </head>
+
 
 <body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-body antialiased">
 
+
+<!-- ═══════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════ -->
+
 <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
 
-<nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
 
-<a class="font-display font-bold text-xl tracking-tight z-10" href="index.html">
-<span class="text-zinc-900 dark:text-white">Junior</span>
-<span class="text-accent">Mauiango</span>
+<nav
+  class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between"
+>
+
+
+<a
+  class="font-display font-bold text-xl tracking-tight z-10"
+  href="index.html"
+>
+
+<span class="text-zinc-900 dark:text-white">
+Junior
+</span>
+
+<span class="text-accent">
+Mauiango
+</span>
+
 </a>
+
 
 <ul class="hidden md:flex items-center gap-8 text-sm font-medium">
 
-<li>
-<a class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" href="index.html#services">
-Services
-</a>
-</li>
 
 <li>
-<a class="nav-link text-accent font-medium" href="projects.html">
-Work
+
+<a
+  class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
+  href="index.html#skills"
+>
+Skills
 </a>
+
 </li>
 
+
 <li>
-<a class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" href="index.html#about">
+
+<a
+  class="nav-link text-accent font-medium"
+  href="projects.html"
+>
+Projects
+</a>
+
+</li>
+
+
+<li>
+
+<a
+  class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
+  href="index.html#experience"
+>
+Experience
+</a>
+
+</li>
+
+
+<li>
+
+<a
+  class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
+  href="index.html#about"
+>
 About
 </a>
+
 </li>
 
-<li>
-<a class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" href="blog.html">
-Blog
-</a>
-</li>
 
 <li>
-<a class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" href="index.html#contact">
+
+<a
+  class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
+  href="index.html#contact"
+>
 Contact
 </a>
+
 </li>
+
 
 </ul>
 
+
 <div class="flex items-center gap-3">
 
-<button class="w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
 
-<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<!-- Theme toggle -->
+
+<button
+  aria-label="Toggle color theme"
+  class="w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+>
+
+
+<svg
+  class="w-4 h-4"
+  fill="none"
+  stroke="currentColor"
+  viewBox="0 0 24 24"
+>
+
+<path
+  d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+></path>
+
 </svg>
 
-<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+
+<svg
+  class="w-4 h-4"
+  fill="none"
+  stroke="currentColor"
+  viewBox="0 0 24 24"
+>
+
+<path
+  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+></path>
+
 </svg>
 
 </button>
 
-<a class="hidden md:inline-flex items-center gap-2 btn-primary bg-accent text-white text-sm font-medium px-5 py-2 rounded-full hover:bg-accent-light transition-colors" href="index.html#contact">
-Hire me →
+
+<a
+  class="hidden md:inline-flex items-center gap-2 btn-primary bg-accent text-white text-sm font-medium px-5 py-2 rounded-full hover:bg-accent-light transition-colors"
+  href="index.html#contact"
+>
+Contact me →
 </a>
 
-<button aria-label="Toggle menu" class="md:hidden w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800">
 
-<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<button
+  aria-label="Toggle menu"
+  class="md:hidden w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800"
+>
+
+
+<svg
+  class="w-4 h-4"
+  fill="none"
+  stroke="currentColor"
+  viewBox="0 0 24 24"
+>
+
+<path
+  d="M4 6h16M4 12h16M4 18h16"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+></path>
+
 </svg>
 
-<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+
+<svg
+  class="w-4 h-4"
+  fill="none"
+  stroke="currentColor"
+  viewBox="0 0 24 24"
+>
+
+<path
+  d="M6 18L18 6M6 6l12 12"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+></path>
+
 </svg>
 
 </button>
 
+
 </div>
+
 </nav>
 
-<div class="md:hidden bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-900">
+
+<!-- MOBILE MENU -->
+
+<div
+  class="md:hidden bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-900"
+>
+
 
 <ul class="flex flex-col px-6 py-4 gap-4 text-sm font-medium">
 
+
 <li>
-<a class="block text-zinc-700 dark:text-zinc-300" href="index.html#services">
-Services
+<a class="block text-zinc-700 dark:text-zinc-300" href="index.html#skills">
+Skills
 </a>
 </li>
 
+
 <li>
 <a class="block text-accent font-medium" href="projects.html">
-Work
+Projects
 </a>
 </li>
+
+
+<li>
+<a class="block text-zinc-700 dark:text-zinc-300" href="index.html#experience">
+Experience
+</a>
+</li>
+
 
 <li>
 <a class="block text-zinc-700 dark:text-zinc-300" href="index.html#about">
@@ -111,11 +291,6 @@ About
 </a>
 </li>
 
-<li>
-<a class="block text-zinc-700 dark:text-zinc-300" href="blog.html">
-Blog
-</a>
-</li>
 
 <li>
 <a class="block text-zinc-700 dark:text-zinc-300" href="index.html#contact">
@@ -123,112 +298,232 @@ Contact
 </a>
 </li>
 
+
 </ul>
 
 </div>
 
 </header>
 
+
 <main>
+
+
+<!-- ═══════════════════════════════════════
+     PROJECT HERO
+═══════════════════════════════════════ -->
 
 <section class="pt-36 pb-12 relative overflow-hidden">
 
-<div class="absolute top-0 right-0 w-80 h-80 bg-accent/10 rounded-full blur-3xl pointer-events-none"></div>
+
+<div
+  class="absolute top-0 right-0 w-80 h-80 bg-accent/10 rounded-full blur-3xl pointer-events-none"
+></div>
+
 
 <div class="max-w-6xl mx-auto px-6 relative z-10">
 
-<p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">
-Portfolio
+
+<p
+  class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3"
+>
+Engineering Portfolio
 </p>
 
-<h1 class="reveal font-display font-bold text-5xl md:text-6xl text-zinc-900 dark:text-white leading-tight mb-4">
-All Projects
+
+<h1
+  class="reveal font-display font-bold text-5xl md:text-6xl text-zinc-900 dark:text-white leading-tight mb-4"
+>
+Projects
 </h1>
 
-<p class="reveal text-lg text-zinc-500 dark:text-zinc-400 max-w-xl leading-relaxed mb-8">
-A complete look at my work across UI/UX design, frontend development and landing pages.
+
+<p
+  class="reveal text-lg text-zinc-500 dark:text-zinc-400 max-w-2xl leading-relaxed mb-8"
+>
+
+A collection of projects spanning embedded systems, robotics,
+analog electronics, hardware and circuit design, and electrical
+power-system modeling.
+
 </p>
+
+
+<!-- PROJECT FILTERS -->
 
 <div class="reveal flex flex-wrap gap-2">
 
-<button class="project-filter text-sm px-4 py-1.5 rounded-full border transition-colors is-active" data-project-filter="all" type="button">
-All (9)
+
+<button
+  class="project-filter text-sm px-4 py-1.5 rounded-full border transition-colors is-active"
+  data-project-filter="all"
+  type="button"
+>
+All (6)
 </button>
 
-<button class="project-filter text-sm px-4 py-1.5 rounded-full border transition-colors" data-project-filter="saas" type="button">
-SaaS
+
+<button
+  class="project-filter text-sm px-4 py-1.5 rounded-full border transition-colors"
+  data-project-filter="embedded"
+  type="button"
+>
+Embedded
 </button>
 
-<button class="project-filter text-sm px-4 py-1.5 rounded-full border transition-colors" data-project-filter="landing" type="button">
-Landing page
+
+<button
+  class="project-filter text-sm px-4 py-1.5 rounded-full border transition-colors"
+  data-project-filter="power"
+  type="button"
+>
+Power
 </button>
 
-<button class="project-filter text-sm px-4 py-1.5 rounded-full border transition-colors" data-project-filter="agency" type="button">
-Agency
+
+<button
+  class="project-filter text-sm px-4 py-1.5 rounded-full border transition-colors"
+  data-project-filter="hardware"
+  type="button"
+>
+Hardware
 </button>
 
-<button class="project-filter text-sm px-4 py-1.5 rounded-full border transition-colors" data-project-filter="ecommerce" type="button">
-E-commerce
+
+<button
+  class="project-filter text-sm px-4 py-1.5 rounded-full border transition-colors"
+  data-project-filter="robotics"
+  type="button"
+>
+Robotics
 </button>
+
 
 </div>
 
 </div>
+
 </section>
 
 
+<!-- ═══════════════════════════════════════
+     PROJECT GRID
+═══════════════════════════════════════ -->
+
 <section class="pb-24">
+
 
 <div class="max-w-6xl mx-auto px-6">
 
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+<div
+  class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+  id="project-grid"
+>
 
 
-<div class="project-item" data-category="saas">
+<!-- ═══════════════════════════════════════
+     PROJECT 1 — 4WD VEHICLE
+═══════════════════════════════════════ -->
 
-<article class="project-card group h-full rounded-2xl overflow-hidden bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors">
+<div
+  class="project-item"
+  data-category="embedded robotics hardware"
+>
 
-<a class="block photo-frame w-full h-52" href="case-study.html">
-<img alt="Novu — SaaS Dashboard" loading="lazy" src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=700&amp;q=80"/>
+
+<article
+  class="project-card group h-full rounded-2xl overflow-hidden bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors"
+>
+
+
+<a
+  class="block photo-frame w-full h-52"
+  href="car-project.html"
+>
+
+
+<img
+  alt="STM32 and Raspberry Pi 4WD embedded vehicle"
+  loading="lazy"
+  src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=700&q=80"
+/>
+
+
 </a>
+
 
 <div class="p-6">
 
+
 <div class="flex flex-wrap gap-2 mb-3">
 
-<span class="text-xs px-2.5 py-1 rounded-full bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700">
-SaaS
+
+<span
+  class="text-xs px-2.5 py-1 rounded-full bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700"
+>
+Embedded
 </span>
 
-<span class="text-xs px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
-Figma
+
+<span
+  class="text-xs px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400"
+>
+STM32
 </span>
 
-<span class="text-xs px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
-Tailwind
+
+<span
+  class="text-xs px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400"
+>
+Raspberry Pi
 </span>
+
 
 </div>
 
-<a href="case-study.html">
-<h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors">
-Novu — SaaS Dashboard
+
+<a href="car-project.html">
+
+<h3
+  class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors"
+>
+STM32–Raspberry Pi 4WD Vehicle
 </h3>
+
 </a>
 
-<p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">
-Complete redesign of a B2B notification platform. Reduced cognitive load by 40% and improved trial-to-paid conversion.
+
+<p
+  class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4"
+>
+
+Four-motor embedded vehicle controlled through a browser-based
+Raspberry Pi dashboard and STM32 microcontroller using bare-metal
+firmware, UART communication, PWM motor control, and ADC-based
+LiPo battery monitoring.
+
 </p>
+
 
 <div class="flex items-center justify-between">
 
-<a class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white nav-link" href="case-study.html">
+
+<a
+  class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white nav-link"
+  href="car-project.html"
+>
 View project →
 </a>
 
-<span class="text-xs text-zinc-400">2025</span>
+
+<span class="text-xs text-zinc-400">
+2026
+</span>
+
 
 </div>
+
 </div>
 
 </article>
@@ -236,51 +531,107 @@ View project →
 </div>
 
 
-<div class="project-item" data-category="landing">
+<!-- ═══════════════════════════════════════
+     PROJECT 2 — QUADCOPTER
+═══════════════════════════════════════ -->
 
-<article class="project-card group h-full rounded-2xl overflow-hidden bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors">
+<div
+  class="project-item"
+  data-category="embedded robotics hardware"
+>
 
-<a class="block photo-frame w-full h-52" href="case-study.html">
-<img alt="Finlo — Fintech App" loading="lazy" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&amp;q=80"/>
+
+<article
+  class="project-card group h-full rounded-2xl overflow-hidden bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors"
+>
+
+
+<a
+  class="block photo-frame w-full h-52"
+  href="drone-project.html"
+>
+
+
+<img
+  alt="Quadcopter flight control system"
+  loading="lazy"
+  src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=700&q=80"
+/>
+
+
 </a>
+
 
 <div class="p-6">
 
+
 <div class="flex flex-wrap gap-2 mb-3">
 
-<span class="text-xs px-2.5 py-1 rounded-full bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700">
-Landing page
+
+<span
+  class="text-xs px-2.5 py-1 rounded-full bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700"
+>
+Embedded
 </span>
 
-<span class="text-xs px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
-Fintech
+
+<span
+  class="text-xs px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400"
+>
+Flight Control
 </span>
 
-<span class="text-xs px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
-Alpine.js
+
+<span
+  class="text-xs px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400"
+>
+In Progress
 </span>
+
 
 </div>
 
-<a href="case-study.html">
-<h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors">
-Finlo — Fintech App
+
+<a href="drone-project.html">
+
+<h3
+  class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors"
+>
+Quadcopter Flight-Control System
 </h3>
+
 </a>
 
-<p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">
-Marketing site and onboarding flow for a personal finance app targeting young professionals.
+
+<p
+  class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4"
+>
+
+Developing an STM32-based quadcopter flight-control system with
+IMU sensing, receiver input, attitude estimation, PID stabilization,
+motor mixing, PWM motor output, and flight-safety logic.
+
 </p>
+
 
 <div class="flex items-center justify-between">
 
-<a class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white nav-link" href="case-study.html">
+
+<a
+  class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white nav-link"
+  href="drone-project.html"
+>
 View project →
 </a>
 
-<span class="text-xs text-zinc-400">2024</span>
+
+<span class="text-xs text-zinc-400">
+2026
+</span>
+
 
 </div>
+
 </div>
 
 </article>
@@ -288,47 +639,108 @@ View project →
 </div>
 
 
-<div class="project-item" data-category="agency">
+<!-- ═══════════════════════════════════════
+     PROJECT 3 — EV GRID RESEARCH
+═══════════════════════════════════════ -->
 
-<article class="project-card group h-full rounded-2xl overflow-hidden bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors">
+<div
+  class="project-item"
+  data-category="power"
+>
 
-<a class="block photo-frame w-full h-52" href="case-study.html">
-<img alt="Orea — Creative Agency" loading="lazy" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=700&amp;q=80"/>
+
+<article
+  class="project-card group h-full rounded-2xl overflow-hidden bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors"
+>
+
+
+<a
+  class="block photo-frame w-full h-52"
+  href="ev-grid-research.html"
+>
+
+
+<img
+  alt="Electrical distribution power system"
+  loading="lazy"
+  src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=700&q=80"
+/>
+
+
 </a>
+
 
 <div class="p-6">
 
+
 <div class="flex flex-wrap gap-2 mb-3">
 
-<span class="text-xs px-2.5 py-1 rounded-full bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700">
-Agency
+
+<span
+  class="text-xs px-2.5 py-1 rounded-full bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700"
+>
+Power Systems
 </span>
 
-<span class="text-xs px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
-Animation
+
+<span
+  class="text-xs px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400"
+>
+MATLAB
 </span>
+
+
+<span
+  class="text-xs px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400"
+>
+MATPOWER
+</span>
+
 
 </div>
 
-<a href="case-study.html">
-<h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors">
-Orea — Creative Agency
+
+<a href="ev-grid-research.html">
+
+<h3
+  class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors"
+>
+EV Grid Integration Research
 </h3>
+
 </a>
 
-<p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">
-Bold editorial site for a Paris-based branding studio. Scroll-driven animations and custom cursor.
+
+<p
+  class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4"
+>
+
+MATLAB and MATPOWER research studying electric-vehicle integration
+on distribution networks, including dynamic charging strategies,
+priority-based charging control, V2G discharging, voltage behavior,
+network loading, and branch losses.
+
 </p>
+
 
 <div class="flex items-center justify-between">
 
-<a class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white nav-link" href="case-study.html">
-View project →
+
+<a
+  class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white nav-link"
+  href="ev-grid-research.html"
+>
+View research →
 </a>
 
-<span class="text-xs text-zinc-400">2024</span>
+
+<span class="text-xs text-zinc-400">
+2025–2026
+</span>
+
 
 </div>
+
 </div>
 
 </article>
@@ -336,47 +748,107 @@ View project →
 </div>
 
 
-<div class="project-item" data-category="landing">
+<!-- ═══════════════════════════════════════
+     PROJECT 4 — LINE-FOLLOWING ROBOT
+═══════════════════════════════════════ -->
 
-<article class="project-card group h-full rounded-2xl overflow-hidden bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors">
+<div
+  class="project-item"
+  data-category="robotics hardware"
+>
 
-<a class="block photo-frame w-full h-52" href="case-study.html">
-<img alt="Vesta — Real Estate" loading="lazy" src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=700&amp;q=80"/>
+
+<article
+  class="project-card group h-full rounded-2xl overflow-hidden bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors"
+>
+
+
+<a
+  class="block photo-frame w-full h-52"
+  href="line-following-robot.html"
+>
+
+
+<img
+  alt="Analog line-following robot on black-line test track"
+  loading="lazy"
+  src="line-following-robot.jpg"
+/>
+
+
 </a>
+
 
 <div class="p-6">
 
+
 <div class="flex flex-wrap gap-2 mb-3">
 
-<span class="text-xs px-2.5 py-1 rounded-full bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700">
-Landing page
+
+<span
+  class="text-xs px-2.5 py-1 rounded-full bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700"
+>
+Robotics
 </span>
 
-<span class="text-xs px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
-Real Estate
+
+<span
+  class="text-xs px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400"
+>
+Analog
 </span>
+
+
+<span
+  class="text-xs px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400"
+>
+IR Sensing
+</span>
+
 
 </div>
 
-<a href="case-study.html">
-<h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors">
-Vesta — Real Estate
+
+<a href="line-following-robot.html">
+
+<h3
+  class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors"
+>
+Analog Line-Following Robot
 </h3>
+
 </a>
 
-<p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">
-Conversion-focused landing page for a proptech startup entering the French market.
+
+<p
+  class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4"
+>
+
+Purely analog mobile robot designed to detect and follow a black-line
+course without using a microcontroller. The project focused on analog
+sensing, motor-control circuitry, testing, and hardware troubleshooting.
+
 </p>
+
 
 <div class="flex items-center justify-between">
 
-<a class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white nav-link" href="case-study.html">
+
+<a
+  class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white nav-link"
+  href="line-following-robot.html"
+>
 View project →
 </a>
 
-<span class="text-xs text-zinc-400">2024</span>
+
+<span class="text-xs text-zinc-400">
+2025
+</span>
+
 
 </div>
+
 </div>
 
 </article>
@@ -384,51 +856,107 @@ View project →
 </div>
 
 
-<div class="project-item" data-category="saas">
+<!-- ═══════════════════════════════════════
+     PROJECT 5 — FIRE DETECTOR
+═══════════════════════════════════════ -->
 
-<article class="project-card group h-full rounded-2xl overflow-hidden bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors">
+<div
+  class="project-item"
+  data-category="hardware"
+>
 
-<a class="block photo-frame w-full h-52" href="case-study.html">
-<img alt="Arkio — SaaS Analytics" loading="lazy" src="https://images.unsplash.com/photo-1581472723648-909f4851d4ae?w=700&amp;q=80"/>
+
+<article
+  class="project-card group h-full rounded-2xl overflow-hidden bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors"
+>
+
+
+<a
+  class="block photo-frame w-full h-52"
+  href="fire-detector.html"
+>
+
+
+<img
+  alt="Analog fire detection circuit on breadboards"
+  loading="lazy"
+  src="fire-detector.jpg"
+/>
+
+
 </a>
+
 
 <div class="p-6">
 
+
 <div class="flex flex-wrap gap-2 mb-3">
 
-<span class="text-xs px-2.5 py-1 rounded-full bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700">
-SaaS
+
+<span
+  class="text-xs px-2.5 py-1 rounded-full bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700"
+>
+Analog Electronics
 </span>
 
-<span class="text-xs px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
-Dashboard
+
+<span
+  class="text-xs px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400"
+>
+Sensors
 </span>
 
-<span class="text-xs px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
-Figma
+
+<span
+  class="text-xs px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400"
+>
+Comparators
 </span>
+
 
 </div>
 
-<a href="case-study.html">
-<h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors">
-Arkio — SaaS Analytics
+
+<a href="fire-detector.html">
+
+<h3
+  class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors"
+>
+Analog Fire Detection Circuit
 </h3>
+
 </a>
 
-<p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">
-Data visualisation dashboard for a B2B analytics platform. Designed for clarity at high data density.
+
+<p
+  class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4"
+>
+
+Analog sensing prototype using a thermistor for temperature detection
+and a photoresistor as an optical input, with threshold circuitry used
+to activate an alarm response.
+
 </p>
+
 
 <div class="flex items-center justify-between">
 
-<a class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white nav-link" href="case-study.html">
+
+<a
+  class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white nav-link"
+  href="fire-detector.html"
+>
 View project →
 </a>
 
-<span class="text-xs text-zinc-400">2024</span>
+
+<span class="text-xs text-zinc-400">
+2025
+</span>
+
 
 </div>
+
 </div>
 
 </article>
@@ -436,47 +964,99 @@ View project →
 </div>
 
 
-<div class="project-item" data-category="ecommerce">
+<!-- ═══════════════════════════════════════
+     PROJECT 6 — ZENER REGULATOR
+═══════════════════════════════════════ -->
 
-<article class="project-card group h-full rounded-2xl overflow-hidden bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors">
+<div
+  class="project-item"
+  data-category="hardware power"
+>
 
-<a class="block photo-frame w-full h-52" href="case-study.html">
-<img alt="Bloom — E-commerce" loading="lazy" src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=700&amp;q=80"/>
-</a>
+
+<article
+  class="project-card group h-full rounded-2xl overflow-hidden bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors"
+>
+
+
+<div class="block photo-frame w-full h-52">
+
+
+<img
+  alt="Electronic circuit and voltage regulator"
+  loading="lazy"
+  src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=700&q=80"
+/>
+
+
+</div>
+
 
 <div class="p-6">
 
+
 <div class="flex flex-wrap gap-2 mb-3">
 
-<span class="text-xs px-2.5 py-1 rounded-full bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700">
-E-commerce
+
+<span
+  class="text-xs px-2.5 py-1 rounded-full bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700"
+>
+Hardware
 </span>
 
-<span class="text-xs px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
-Shopify
+
+<span
+  class="text-xs px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400"
+>
+Circuit Design
 </span>
+
+
+<span
+  class="text-xs px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400"
+>
+Power Regulation
+</span>
+
 
 </div>
 
-<a href="case-study.html">
-<h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors">
-Bloom — E-commerce
-</h3>
-</a>
 
-<p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">
-Custom Shopify theme for a sustainable cosmetics brand. Mobile-first with high emphasis on product imagery.
+<h3
+  class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-2"
+>
+Zener Voltage Regulator
+</h3>
+
+
+<p
+  class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4"
+>
+
+Designed and tested a Zener-diode voltage regulator to maintain a
+stable output under changing load conditions while applying circuit
+analysis and laboratory measurement techniques.
+
 </p>
+
 
 <div class="flex items-center justify-between">
 
-<a class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white nav-link" href="case-study.html">
-View project →
-</a>
 
-<span class="text-xs text-zinc-400">2023</span>
+<span
+  class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 dark:text-zinc-400"
+>
+Circuit project
+</span>
+
+
+<span class="text-xs text-zinc-400">
+2025
+</span>
+
 
 </div>
+
 </div>
 
 </article>
@@ -484,221 +1064,131 @@ View project →
 </div>
 
 
-<div class="project-item" data-category="landing">
-
-<article class="project-card group h-full rounded-2xl overflow-hidden bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors">
-
-<a class="block photo-frame w-full h-52" href="case-study.html">
-<img alt="Mira — Health App" loading="lazy" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=700&amp;q=80"/>
-</a>
-
-<div class="p-6">
-
-<div class="flex flex-wrap gap-2 mb-3">
-
-<span class="text-xs px-2.5 py-1 rounded-full bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700">
-Landing page
-</span>
-
-<span class="text-xs px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
-Health
-</span>
-
-<span class="text-xs px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
-Tailwind
-</span>
-
-</div>
-
-<a href="case-study.html">
-<h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors">
-Mira — Health App
-</h3>
-</a>
-
-<p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">
-App landing page for a mental wellness startup. Warm, accessible design with strong social proof.
-</p>
-
-<div class="flex items-center justify-between">
-
-<a class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white nav-link" href="case-study.html">
-View project →
-</a>
-
-<span class="text-xs text-zinc-400">2023</span>
-
-</div>
-</div>
-
-</article>
-
 </div>
 
 
-<div class="project-item" data-category="agency">
+<!-- EMPTY FILTER MESSAGE -->
 
-<article class="project-card group h-full rounded-2xl overflow-hidden bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors">
+<div
+  class="hidden text-center py-20"
+  id="project-empty"
+>
 
-<a class="block photo-frame w-full h-52" href="case-study.html">
-<img alt="Noto — Agency Rebrand" loading="lazy" src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&amp;q=80"/>
-</a>
-
-<div class="p-6">
-
-<div class="flex flex-wrap gap-2 mb-3">
-
-<span class="text-xs px-2.5 py-1 rounded-full bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700">
-Agency
-</span>
-
-<span class="text-xs px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
-Rebrand
-</span>
-
-</div>
-
-<a href="case-study.html">
-<h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors">
-Noto — Agency Rebrand
-</h3>
-</a>
-
-<p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">
-Full rebrand and website for a digital communications agency in Lyon.
-</p>
-
-<div class="flex items-center justify-between">
-
-<a class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white nav-link" href="case-study.html">
-View project →
-</a>
-
-<span class="text-xs text-zinc-400">2023</span>
-
-</div>
-</div>
-
-</article>
-
-</div>
-
-
-<div class="project-item" data-category="ecommerce">
-
-<article class="project-card group h-full rounded-2xl overflow-hidden bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors">
-
-<a class="block photo-frame w-full h-52" href="case-study.html">
-<img alt="Kova — E-commerce" loading="lazy" src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&amp;q=80"/>
-</a>
-
-<div class="p-6">
-
-<div class="flex flex-wrap gap-2 mb-3">
-
-<span class="text-xs px-2.5 py-1 rounded-full bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700">
-E-commerce
-</span>
-
-<span class="text-xs px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
-Figma
-</span>
-
-</div>
-
-<a href="case-study.html">
-<h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors">
-Kova — E-commerce
-</h3>
-</a>
-
-<p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">
-Product page redesign and checkout optimisation for a DTC furniture brand. Reduced cart abandonment by 18%.
-</p>
-
-<div class="flex items-center justify-between">
-
-<a class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white nav-link" href="case-study.html">
-View project →
-</a>
-
-<span class="text-xs text-zinc-400">2023</span>
-
-</div>
-</div>
-
-</article>
-
-</div>
-
-</div>
-
-
-<div class="text-center py-20">
 <p class="text-zinc-400 text-sm">
 No projects in this category yet.
 </p>
+
 </div>
+
 
 </div>
 
 </section>
 
+
+<!-- ═══════════════════════════════════════
+     CTA
+═══════════════════════════════════════ -->
 
 <section class="pb-24">
 
+
 <div class="max-w-6xl mx-auto px-6">
 
-<div class="bg-zinc-900 dark:bg-zinc-800 rounded-3xl p-10 md:p-14 text-center relative overflow-hidden">
 
-<div class="absolute top-0 right-0 w-64 h-64 bg-accent/20 rounded-full blur-3xl pointer-events-none"></div>
+<div
+  class="bg-zinc-900 dark:bg-zinc-800 rounded-3xl p-10 md:p-14 text-center relative overflow-hidden"
+>
 
-<div class="absolute bottom-0 left-0 w-40 h-40 bg-accent/10 rounded-full blur-2xl pointer-events-none"></div>
+
+<div
+  class="absolute top-0 right-0 w-64 h-64 bg-accent/20 rounded-full blur-3xl pointer-events-none"
+></div>
+
+
+<div
+  class="absolute bottom-0 left-0 w-40 h-40 bg-accent/10 rounded-full blur-2xl pointer-events-none"
+></div>
+
 
 <div class="relative z-10">
 
-<p class="text-xs font-medium text-accent tracking-widest uppercase mb-4">
-Ready to start?
+
+<p
+  class="text-xs font-medium text-accent tracking-widest uppercase mb-4"
+>
+Interested in my work?
 </p>
 
-<h2 class="font-display font-bold text-3xl md:text-4xl text-white mb-4">
-Want your project here?
+
+<h2
+  class="font-display font-bold text-3xl md:text-4xl text-white mb-4"
+>
+Let's connect.
 </h2>
 
-<p class="text-zinc-400 max-w-md mx-auto mb-8">
-I'm available for new projects. Tell me about what you're building and let's see if we're a good fit.
+
+<p
+  class="text-zinc-400 max-w-lg mx-auto mb-8"
+>
+
+I'm interested in opportunities involving embedded systems,
+hardware, electronics, power systems, robotics, and related
+electrical-engineering work.
+
 </p>
 
-<a class="inline-flex items-center gap-2 btn-primary bg-accent text-white font-medium px-8 py-3.5 rounded-full hover:bg-accent-light transition-colors" href="index.html#contact">
-Start a project →
+
+<a
+  class="inline-flex items-center gap-2 btn-primary bg-accent text-white font-medium px-8 py-3.5 rounded-full hover:bg-accent-light transition-colors"
+  href="index.html#contact"
+>
+Contact me →
 </a>
 
+
 </div>
+
 </div>
+
 </div>
 
 </section>
+
 
 </main>
 
 
+<!-- ═══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
+
 <footer class="border-t border-zinc-100 dark:border-zinc-900">
 
-<div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+
+<div
+  class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4"
+>
+
 
 <p class="text-sm text-zinc-400">
 © <span id="year"></span> Junior Mauiango. All rights reserved.
 </p>
 
+
 <p class="text-xs text-zinc-500">
 Built with HTML, CSS, and JavaScript.
 </p>
+
 
 </div>
 
 </footer>
 
+
 <script defer src="script.js"></script>
 
+
 </body>
+
 </html>

@@ -1,0 +1,1688 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth dark" lang="en">
+
+<head>
+
+<meta charset="utf-8"/>
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+<meta
+  content="Case study of Junior Mauiango's STM32–Raspberry Pi 4WD vehicle featuring bare-metal STM32 firmware, UART communication, PWM motor control, ultrasonic sensing, battery monitoring, and Raspberry Pi browser control."
+  name="description"
+/>
+
+<meta content="Junior Mauiango" name="author"/>
+
+<meta
+  content="STM32–Raspberry Pi 4WD Vehicle — Engineering Case Study"
+  property="og:title"
+/>
+
+<meta content="article" property="og:type"/>
+
+<title>STM32–Raspberry Pi 4WD Vehicle — Junior Mauiango</title>
+
+
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+
+<link
+  crossorigin=""
+  href="https://fonts.gstatic.com"
+  rel="preconnect"
+/>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&display=swap"
+  rel="stylesheet"
+/>
+
+<link href="style.css" rel="stylesheet"/>
+
+
+<script>
+
+try {
+
+  const savedTheme = localStorage.getItem("theme");
+
+  if (savedTheme !== "light") {
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
+
+} catch (error) {
+
+  document.documentElement.classList.add("dark");
+
+}
+
+</script>
+
+</head>
+
+
+<body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-body antialiased">
+
+
+<div
+  aria-label="Reading progress"
+  aria-valuemax="100"
+  aria-valuemin="0"
+  class="progress-bar"
+  role="progressbar"
+></div>
+
+
+<!-- ═══════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════ -->
+
+<header class="fixed top-0.5 left-0 right-0 z-50 transition-all duration-300">
+
+
+<nav
+  aria-label="Main navigation"
+  class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between"
+>
+
+
+<a
+  class="font-display font-bold text-xl tracking-tight z-10"
+  href="index.html"
+>
+
+<span class="text-zinc-900 dark:text-white">
+Junior
+</span>
+
+<span class="text-accent">
+Mauiango
+</span>
+
+</a>
+
+
+<ul
+  class="hidden md:flex items-center gap-8 text-sm font-medium"
+  role="list"
+>
+
+
+<li>
+
+<a
+  class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
+  href="index.html#skills"
+>
+Skills
+</a>
+
+</li>
+
+
+<li>
+
+<a
+  class="nav-link text-accent font-medium"
+  href="projects.html"
+>
+Projects
+</a>
+
+</li>
+
+
+<li>
+
+<a
+  class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
+  href="index.html#experience"
+>
+Experience
+</a>
+
+</li>
+
+
+<li>
+
+<a
+  class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
+  href="index.html#about"
+>
+About
+</a>
+
+</li>
+
+
+<li>
+
+<a
+  class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
+  href="index.html#contact"
+>
+Contact
+</a>
+
+</li>
+
+</ul>
+
+
+<div class="flex items-center gap-3">
+
+
+<button
+  aria-label="Toggle color theme"
+  class="w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+>
+
+
+<svg
+  aria-hidden="true"
+  class="w-4 h-4"
+  fill="none"
+  stroke="currentColor"
+  viewBox="0 0 24 24"
+>
+
+<path
+  d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+></path>
+
+</svg>
+
+
+<svg
+  aria-hidden="true"
+  class="w-4 h-4"
+  fill="none"
+  stroke="currentColor"
+  viewBox="0 0 24 24"
+>
+
+<path
+  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+></path>
+
+</svg>
+
+</button>
+
+
+<a
+  class="hidden md:inline-flex items-center gap-2 btn-primary bg-accent text-white text-sm font-medium px-5 py-2 rounded-full hover:bg-accent-light transition-colors"
+  href="index.html#contact"
+>
+Contact me →
+</a>
+
+
+<button
+  aria-label="Toggle menu"
+  class="md:hidden w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800"
+>
+
+
+<svg
+  aria-hidden="true"
+  class="w-4 h-4"
+  fill="none"
+  stroke="currentColor"
+  viewBox="0 0 24 24"
+>
+
+<path
+  d="M4 6h16M4 12h16M4 18h16"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+></path>
+
+</svg>
+
+
+<svg
+  aria-hidden="true"
+  class="w-4 h-4"
+  fill="none"
+  stroke="currentColor"
+  viewBox="0 0 24 24"
+>
+
+<path
+  d="M6 18L18 6M6 6l12 12"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+></path>
+
+</svg>
+
+
+</button>
+
+
+</div>
+
+</nav>
+
+
+<!-- MOBILE MENU -->
+
+<div
+  class="md:hidden bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-900"
+>
+
+
+<ul
+  class="flex flex-col px-6 py-4 gap-4 text-sm font-medium"
+  role="list"
+>
+
+
+<li>
+
+<a
+  class="block text-zinc-700 dark:text-zinc-300"
+  href="index.html#skills"
+>
+Skills
+</a>
+
+</li>
+
+
+<li>
+
+<a
+  class="block text-accent font-medium"
+  href="projects.html"
+>
+Projects
+</a>
+
+</li>
+
+
+<li>
+
+<a
+  class="block text-zinc-700 dark:text-zinc-300"
+  href="index.html#experience"
+>
+Experience
+</a>
+
+</li>
+
+
+<li>
+
+<a
+  class="block text-zinc-700 dark:text-zinc-300"
+  href="index.html#about"
+>
+About
+</a>
+
+</li>
+
+
+<li>
+
+<a
+  class="block text-zinc-700 dark:text-zinc-300"
+  href="index.html#contact"
+>
+Contact
+</a>
+
+</li>
+
+
+</ul>
+
+</div>
+
+</header>
+
+
+<main>
+
+
+<article>
+
+
+<!-- ═══════════════════════════════════════
+     CASE STUDY HEADER
+═══════════════════════════════════════ -->
+
+<header class="pt-32 pb-10 max-w-4xl mx-auto px-6">
+
+
+<a
+  class="inline-flex items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400 hover:text-accent transition-colors mb-8"
+  href="projects.html"
+>
+
+
+<svg
+  aria-hidden="true"
+  class="w-4 h-4"
+  fill="none"
+  stroke="currentColor"
+  viewBox="0 0 24 24"
+>
+
+<path
+  d="M7 16l-4-4m0 0l4-4m-4 4h18"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+></path>
+
+</svg>
+
+
+Back to projects
+
+</a>
+
+
+<div class="flex flex-wrap items-center gap-3 mb-6">
+
+
+<span
+  class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full"
+>
+Embedded Systems
+</span>
+
+
+<span
+  class="text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-2.5 py-1 rounded-full"
+>
+STM32
+</span>
+
+
+<span
+  class="text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-2.5 py-1 rounded-full"
+>
+Raspberry Pi
+</span>
+
+
+<span
+  class="text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-2.5 py-1 rounded-full"
+>
+UART
+</span>
+
+
+<span class="text-xs text-zinc-400 ml-1">
+2026
+</span>
+
+
+</div>
+
+
+<h1
+  class="reveal font-display font-bold text-4xl md:text-5xl lg:text-6xl text-zinc-900 dark:text-white leading-tight mb-6"
+>
+STM32–Raspberry Pi 4WD Vehicle
+</h1>
+
+
+<p
+  class="reveal d1 text-xl text-zinc-500 dark:text-zinc-400 leading-relaxed mb-10 max-w-3xl"
+>
+A four-motor embedded vehicle combining bare-metal STM32 firmware
+with Raspberry Pi browser control, real-time UART communication,
+PWM motor control, ultrasonic obstacle detection, and LiPo battery
+monitoring.
+</p>
+
+
+<div
+  class="reveal d2 grid grid-cols-2 md:grid-cols-4 gap-4 py-8 border-t border-b border-zinc-100 dark:border-zinc-900"
+>
+
+
+<div>
+
+<p class="text-xs text-zinc-400 uppercase tracking-widest mb-1">
+Platform
+</p>
+
+<p
+  class="font-medium text-zinc-900 dark:text-white text-sm"
+>
+STM32 + Raspberry Pi
+</p>
+
+</div>
+
+
+<div>
+
+<p class="text-xs text-zinc-400 uppercase tracking-widest mb-1">
+Firmware
+</p>
+
+<p
+  class="font-medium text-zinc-900 dark:text-white text-sm"
+>
+Bare-metal C
+</p>
+
+</div>
+
+
+<div>
+
+<p class="text-xs text-zinc-400 uppercase tracking-widest mb-1">
+Communication
+</p>
+
+<p
+  class="font-medium text-zinc-900 dark:text-white text-sm"
+>
+UART · 115200 baud
+</p>
+
+</div>
+
+
+<div>
+
+<p class="text-xs text-zinc-400 uppercase tracking-widest mb-1">
+Power
+</p>
+
+<p
+  class="font-medium text-zinc-900 dark:text-white text-sm"
+>
+3S LiPo + DC-DC Buck
+</p>
+
+</div>
+
+
+</div>
+
+</header>
+
+
+<!-- ═══════════════════════════════════════
+     HERO IMAGE
+═══════════════════════════════════════ -->
+
+<div class="max-w-6xl mx-auto px-6 mb-16">
+
+
+<div
+  class="reveal photo-frame w-full h-72 md:h-[480px] rounded-3xl"
+>
+
+
+<img
+  alt="STM32 and Raspberry Pi robotic vehicle"
+  loading="eager"
+  src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1400&q=80"
+/>
+
+
+</div>
+
+
+<p class="img-caption">
+Placeholder image — replace with a photo of the completed vehicle.
+</p>
+
+
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     SYSTEM HIGHLIGHTS
+═══════════════════════════════════════ -->
+
+<div class="max-w-4xl mx-auto px-6 mb-16">
+
+
+<div class="reveal grid grid-cols-2 md:grid-cols-4 gap-4">
+
+
+<div
+  class="stat-card bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-5 pl-6"
+>
+
+<p
+  class="font-display font-bold text-3xl text-zinc-900 dark:text-white"
+>
+4
+</p>
+
+<p
+  class="text-xs text-zinc-500 dark:text-zinc-400 mt-1 leading-snug"
+>
+Independently controlled motors
+</p>
+
+</div>
+
+
+<div
+  class="stat-card bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-5 pl-6"
+>
+
+<p
+  class="font-display font-bold text-3xl text-accent"
+>
+8
+</p>
+
+<p
+  class="text-xs text-zinc-500 dark:text-zinc-400 mt-1 leading-snug"
+>
+STM32 PWM outputs
+</p>
+
+</div>
+
+
+<div
+  class="stat-card bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-5 pl-6"
+>
+
+<p
+  class="font-display font-bold text-3xl text-zinc-900 dark:text-white"
+>
+115200
+</p>
+
+<p
+  class="text-xs text-zinc-500 dark:text-zinc-400 mt-1 leading-snug"
+>
+UART baud rate
+</p>
+
+</div>
+
+
+<div
+  class="stat-card bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-5 pl-6"
+>
+
+<p
+  class="font-display font-bold text-3xl text-zinc-900 dark:text-white"
+>
+9.9 V
+</p>
+
+<p
+  class="text-xs text-zinc-500 dark:text-zinc-400 mt-1 leading-snug"
+>
+Low-voltage threshold
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     PROJECT BODY
+═══════════════════════════════════════ -->
+
+<div class="max-w-3xl mx-auto px-6 pb-4 prose-cs">
+
+
+<h2>
+Project overview
+</h2>
+
+
+<p>
+The goal of this project was to build a complete embedded vehicle
+that combined low-level microcontroller control with a higher-level
+browser interface. The STM32 handled the time-critical hardware
+functions while the Raspberry Pi provided the user interface and
+communication layer.
+</p>
+
+
+<p>
+The result was a four-wheel-drive vehicle capable of independent
+bidirectional motor control, remote browser commands, obstacle
+protection, battery-voltage monitoring, and real-time system-status
+reporting.
+</p>
+
+
+<h2>
+System architecture
+</h2>
+
+
+<p>
+The design separated the system into two main computing platforms.
+The Raspberry Pi handled the browser dashboard and sent movement
+commands to the STM32. The STM32 handled the motor-control,
+sensor, and battery-monitoring functions.
+</p>
+
+
+<ul>
+
+<li>
+<strong>Raspberry Pi:</strong>
+browser-based control interface and high-level command generation
+</li>
+
+<li>
+<strong>STM32:</strong>
+bare-metal firmware, motor PWM generation, UART communication,
+ultrasonic sensing, and ADC battery monitoring
+</li>
+
+<li>
+<strong>Motor-control hardware:</strong>
+four DC motors driven independently in both directions
+</li>
+
+<li>
+<strong>Power system:</strong>
+3S LiPo battery with DC-DC regulation for the electronics
+</li>
+
+</ul>
+
+
+</div>
+
+
+<!-- SYSTEM ARCHITECTURE CARDS -->
+
+<div class="max-w-5xl mx-auto px-6 mb-12">
+
+
+<div class="reveal grid md:grid-cols-3 gap-5">
+
+
+<div
+  class="bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800"
+>
+
+
+<div
+  class="w-10 h-10 bg-orange-50 dark:bg-zinc-800 rounded-xl flex items-center justify-center mb-4"
+>
+
+<svg
+  aria-hidden="true"
+  class="w-5 h-5 text-accent"
+  fill="none"
+  stroke="currentColor"
+  viewBox="0 0 24 24"
+>
+
+<path
+  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+></path>
+
+</svg>
+
+</div>
+
+
+<h3
+  class="font-display font-bold text-zinc-900 dark:text-white mb-2"
+  style="font-size:1rem;margin:0 0 .5rem;color:inherit;"
+>
+Bare-metal firmware
+</h3>
+
+
+<p
+  class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed"
+  style="margin:0;color:inherit;"
+>
+STM32 peripherals were configured directly at the register level
+rather than relying on a high-level hardware abstraction layer.
+</p>
+
+
+</div>
+
+
+<div
+  class="bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800"
+>
+
+
+<div
+  class="w-10 h-10 bg-orange-50 dark:bg-zinc-800 rounded-xl flex items-center justify-center mb-4"
+>
+
+<svg
+  aria-hidden="true"
+  class="w-5 h-5 text-accent"
+  fill="none"
+  stroke="currentColor"
+  viewBox="0 0 24 24"
+>
+
+<path
+  d="M8 12h8m-4-4v8M4 6h16v12H4z"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+></path>
+
+</svg>
+
+</div>
+
+
+<h3
+  class="font-display font-bold text-zinc-900 dark:text-white mb-2"
+  style="font-size:1rem;margin:0 0 .5rem;color:inherit;"
+>
+Browser control
+</h3>
+
+
+<p
+  class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed"
+  style="margin:0;color:inherit;"
+>
+A Raspberry Pi browser dashboard provided movement commands and
+displayed vehicle direction, PWM duty cycle, obstacle distance,
+and system status.
+</p>
+
+
+</div>
+
+
+<div
+  class="bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800"
+>
+
+
+<div
+  class="w-10 h-10 bg-orange-50 dark:bg-zinc-800 rounded-xl flex items-center justify-center mb-4"
+>
+
+<svg
+  aria-hidden="true"
+  class="w-5 h-5 text-accent"
+  fill="none"
+  stroke="currentColor"
+  viewBox="0 0 24 24"
+>
+
+<path
+  d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+></path>
+
+</svg>
+
+</div>
+
+
+<h3
+  class="font-display font-bold text-zinc-900 dark:text-white mb-2"
+  style="font-size:1rem;margin:0 0 .5rem;color:inherit;"
+>
+Power management
+</h3>
+
+
+<p
+  class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed"
+  style="margin:0;color:inherit;"
+>
+The system used a 3S LiPo battery with regulated power supplied
+through a DC-DC buck converter and ADC-based battery-voltage
+monitoring.
+</p>
+
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- MOTOR CONTROL -->
+
+<div class="max-w-3xl mx-auto px-6 pb-4 prose-cs">
+
+
+<h2>
+Motor-control system
+</h2>
+
+
+<p>
+The vehicle required independent bidirectional control of four DC
+motors. To achieve that, I configured eight PWM outputs across the
+STM32 TIM2 and TIM3 peripherals using bare-metal register-level C.
+</p>
+
+
+<p>
+Using independent PWM outputs allowed the firmware to control the
+direction and speed of each motor while keeping the time-critical
+motor-control behavior on the STM32.
+</p>
+
+
+<h3>
+PWM debugging
+</h3>
+
+
+<p>
+One of the major debugging challenges appeared when several motor
+channels did not operate reliably. The issue was traced to
+incompatible timer-output pins. I diagnosed the problem and rerouted
+the PWM signals to STM32 pins connected to functional timer channels.
+</p>
+
+
+<p>
+After the signals were reassigned, reliable control was restored
+across all four motors.
+</p>
+
+
+</div>
+
+
+<!-- DEBUG IMAGE -->
+
+<div class="max-w-5xl mx-auto px-6 mb-4">
+
+
+<div
+  class="reveal photo-frame w-full h-56 md:h-80 rounded-2xl"
+>
+
+<img
+  alt="STM32 embedded electronics development"
+  loading="lazy"
+  src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80"
+/>
+
+</div>
+
+
+<p class="img-caption">
+Placeholder image — this would be a good location for your STM32,
+motor-driver, or wiring photo.
+</p>
+
+
+</div>
+
+
+<!-- UART + BROWSER -->
+
+<div class="max-w-3xl mx-auto px-6 pb-4 prose-cs">
+
+
+<h2>
+Raspberry Pi communication
+</h2>
+
+
+<p>
+The Raspberry Pi communicated with the STM32 through a
+115,200-baud UART link. This allowed browser-issued commands to be
+sent to the microcontroller while keeping the low-level motor
+control independent from the web interface.
+</p>
+
+
+<p>
+The browser dashboard provided real-time visibility into the
+vehicle's operation, including direction, PWM duty cycle,
+obstacle distance, and overall system status.
+</p>
+
+
+</div>
+
+
+<!-- PROCESS -->
+
+<div class="max-w-4xl mx-auto px-6 mb-12">
+
+
+<div class="reveal space-y-4">
+
+
+<div
+  class="flex gap-5 bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800"
+>
+
+<div class="step-badge shrink-0 mt-0.5">
+1
+</div>
+
+<div>
+
+<p
+  class="font-display font-bold text-zinc-900 dark:text-white mb-1"
+>
+Configure motor-control peripherals
+</p>
+
+<p
+  class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed"
+>
+Configured STM32 TIM2 and TIM3 to generate eight PWM outputs for
+independent bidirectional control of the four motors.
+</p>
+
+</div>
+
+</div>
+
+
+<div
+  class="flex gap-5 bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800"
+>
+
+<div class="step-badge shrink-0 mt-0.5">
+2
+</div>
+
+<div>
+
+<p
+  class="font-display font-bold text-zinc-900 dark:text-white mb-1"
+>
+Connect Raspberry Pi and STM32
+</p>
+
+<p
+  class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed"
+>
+Established a 115,200-baud UART connection so browser commands
+could be transferred from the Raspberry Pi to the microcontroller.
+</p>
+
+</div>
+
+</div>
+
+
+<div
+  class="flex gap-5 bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800"
+>
+
+<div class="step-badge shrink-0 mt-0.5">
+3
+</div>
+
+<div>
+
+<p
+  class="font-display font-bold text-zinc-900 dark:text-white mb-1"
+>
+Add obstacle protection
+</p>
+
+<p
+  class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed"
+>
+Integrated ultrasonic distance measurements so forward movement
+could be overridden when an obstacle crossed the programmed
+safety threshold.
+</p>
+
+</div>
+
+</div>
+
+
+<div
+  class="flex gap-5 bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800"
+>
+
+<div class="step-badge shrink-0 mt-0.5">
+4
+</div>
+
+<div>
+
+<p
+  class="font-display font-bold text-zinc-900 dark:text-white mb-1"
+>
+Implement battery monitoring
+</p>
+
+<p
+  class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed"
+>
+Measured the 3S LiPo voltage through a resistor-divider circuit
+and STM32 ADC, using a 9.9 V low-voltage threshold to protect the
+battery from excessive discharge.
+</p>
+
+</div>
+
+</div>
+
+
+<div
+  class="flex gap-5 bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800"
+>
+
+<div class="step-badge shrink-0 mt-0.5">
+5
+</div>
+
+<div>
+
+<p
+  class="font-display font-bold text-zinc-900 dark:text-white mb-1"
+>
+Debug hardware integration
+</p>
+
+<p
+  class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed"
+>
+Diagnosed incompatible timer-output pins and rerouted PWM signals
+to valid STM32 channels to restore reliable operation across all
+four motors.
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- SAFETY -->
+
+<div class="max-w-3xl mx-auto px-6 pb-4 prose-cs">
+
+
+<h2>
+Obstacle detection
+</h2>
+
+
+<p>
+The vehicle included ultrasonic sensing as a safety feature.
+Distance measurements were used to override forward-drive commands
+when objects crossed the programmed safety threshold.
+</p>
+
+
+<p>
+This added a layer of protection between the user interface and the
+motor-control system, allowing the STM32 to prevent unsafe movement
+even when a forward command was received.
+</p>
+
+
+<h2>
+Battery monitoring and power
+</h2>
+
+
+<p>
+The vehicle was powered from a 3S LiPo battery. A resistor-divider
+circuit scaled the battery voltage into the STM32 ADC measurement
+range so the firmware could monitor the battery during operation.
+</p>
+
+
+<p>
+A low-voltage threshold of 9.9 V was used to protect the LiPo from
+excessive discharge.
+</p>
+
+
+<p>
+A DC-DC buck converter provided regulated power for the STM32,
+Raspberry Pi, motor drivers, and supporting electronics.
+</p>
+
+
+</div>
+
+
+<!-- IMAGE PLACEHOLDERS -->
+
+<div class="max-w-5xl mx-auto px-6 mb-12">
+
+
+<div class="reveal grid md:grid-cols-2 gap-4">
+
+
+<div>
+
+
+<div class="photo-frame w-full h-52 rounded-2xl">
+
+<img
+  alt="Embedded vehicle electronics"
+  loading="lazy"
+  src="https://images.unsplash.com/photo-1553406830-ef2513450d76?w=700&q=80"
+/>
+
+</div>
+
+
+<p class="img-caption mt-2">
+Replace with vehicle electronics or wiring photo
+</p>
+
+
+</div>
+
+
+<div>
+
+
+<div class="photo-frame w-full h-52 rounded-2xl">
+
+<img
+  alt="Raspberry Pi and embedded system"
+  loading="lazy"
+  src="https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=700&q=80"
+/>
+
+</div>
+
+
+<p class="img-caption mt-2">
+Replace with Raspberry Pi dashboard or completed vehicle photo
+</p>
+
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- RESULTS -->
+
+<div class="max-w-3xl mx-auto px-6 pb-16 prose-cs">
+
+
+<h2>
+Final system
+</h2>
+
+
+<p>
+The completed system brought together embedded firmware, hardware,
+communication, sensing, power management, and a browser interface
+into one working platform.
+</p>
+
+
+<ul>
+
+<li>
+Independent bidirectional control of four DC motors
+</li>
+
+<li>
+Eight STM32 PWM outputs using TIM2 and TIM3
+</li>
+
+<li>
+Browser-based vehicle control through a Raspberry Pi
+</li>
+
+<li>
+115,200-baud UART communication between Raspberry Pi and STM32
+</li>
+
+<li>
+Ultrasonic obstacle detection with forward-motion override
+</li>
+
+<li>
+Real-time dashboard visibility into operating status
+</li>
+
+<li>
+ADC-based 3S LiPo battery monitoring
+</li>
+
+<li>
+9.9 V low-voltage protection threshold
+</li>
+
+<li>
+DC-DC buck regulation for the control electronics
+</li>
+
+</ul>
+
+
+<h2>
+What I learned
+</h2>
+
+
+<p>
+This project gave me experience integrating software and hardware
+across multiple levels of an embedded system. The most valuable
+part was working through real hardware problems rather than only
+writing firmware in isolation.
+</p>
+
+
+<p>
+The PWM pin issue in particular reinforced the importance of
+understanding the microcontroller's timer-channel and pin-mapping
+constraints. The project also required coordinating power,
+communication, sensing, motor control, and user-interface behavior
+as parts of one complete system.
+</p>
+
+
+<hr/>
+
+
+<p>
+
+<em>
+More of my engineering work is available on the
+<a href="projects.html">
+projects page
+</a>
+or you can
+<a href="index.html#contact">
+contact me here
+</a>.
+</em>
+
+</p>
+
+
+</div>
+
+
+</article>
+
+
+<!-- ═══════════════════════════════════════
+     MORE PROJECTS
+═══════════════════════════════════════ -->
+
+<section
+  class="bg-zinc-50 dark:bg-zinc-900/50 py-16"
+>
+
+
+<div class="max-w-6xl mx-auto px-6">
+
+
+<div class="flex items-center justify-between mb-8">
+
+
+<h2
+  class="font-display font-bold text-2xl text-zinc-900 dark:text-white"
+>
+More projects
+</h2>
+
+
+<a
+  class="text-sm font-medium text-accent nav-link hidden md:block"
+  href="projects.html"
+>
+View all →
+</a>
+
+
+</div>
+
+
+<div class="grid md:grid-cols-3 gap-6">
+
+
+<!-- QUADCOPTER -->
+
+<article
+  class="reveal card-h group bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors"
+>
+
+
+<div class="photo-frame w-full h-44">
+
+<img
+  alt="Quadcopter project"
+  loading="lazy"
+  src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=700&q=80"
+/>
+
+</div>
+
+
+<div class="p-5">
+
+
+<div class="flex gap-2 mb-2">
+
+<span
+  class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full"
+>
+Embedded
+</span>
+
+</div>
+
+
+<a href="projects.html">
+
+<h3
+  class="font-display font-bold text-base text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors"
+>
+Quadcopter Flight-Control System
+</h3>
+
+</a>
+
+
+<a
+  class="text-sm font-medium text-accent nav-link"
+  href="projects.html"
+>
+View project →
+</a>
+
+
+</div>
+
+</article>
+
+
+<!-- POWER -->
+
+<article
+  class="reveal card-h group bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors"
+>
+
+
+<div class="photo-frame w-full h-44">
+
+<img
+  alt="Power distribution system"
+  loading="lazy"
+  src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=700&q=80"
+/>
+
+</div>
+
+
+<div class="p-5">
+
+
+<div class="flex gap-2 mb-2">
+
+<span
+  class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full"
+>
+Power Systems
+</span>
+
+</div>
+
+
+<a href="projects.html">
+
+<h3
+  class="font-display font-bold text-base text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors"
+>
+EV &amp; V2G Distribution Modeling
+</h3>
+
+</a>
+
+
+<a
+  class="text-sm font-medium text-accent nav-link"
+  href="projects.html"
+>
+View research →
+</a>
+
+
+</div>
+
+</article>
+
+
+<!-- LINE FOLLOWER -->
+
+<article
+  class="reveal card-h group bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors"
+>
+
+
+<div class="photo-frame w-full h-44">
+
+<img
+  alt="Line following robot project"
+  loading="lazy"
+  src="https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=700&q=80"
+/>
+
+</div>
+
+
+<div class="p-5">
+
+
+<div class="flex gap-2 mb-2">
+
+<span
+  class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full"
+>
+Robotics
+</span>
+
+</div>
+
+
+<a href="projects.html">
+
+<h3
+  class="font-display font-bold text-base text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors"
+>
+Autonomous Line-Following Robot
+</h3>
+
+</a>
+
+
+<a
+  class="text-sm font-medium text-accent nav-link"
+  href="projects.html"
+>
+View project →
+</a>
+
+
+</div>
+
+</article>
+
+
+</div>
+
+
+<div class="text-center mt-8 md:hidden">
+
+<a
+  class="text-sm font-medium text-accent"
+  href="projects.html"
+>
+View all projects →
+</a>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     CTA
+═══════════════════════════════════════ -->
+
+<section class="py-24">
+
+
+<div class="max-w-6xl mx-auto px-6">
+
+
+<div
+  class="bg-zinc-900 dark:bg-zinc-800 rounded-3xl p-10 md:p-14 text-center relative overflow-hidden"
+>
+
+
+<div
+  aria-hidden="true"
+  class="absolute top-0 right-0 w-64 h-64 bg-accent/20 rounded-full blur-3xl pointer-events-none"
+></div>
+
+
+<div
+  aria-hidden="true"
+  class="absolute bottom-0 left-0 w-40 h-40 bg-accent/10 rounded-full blur-2xl pointer-events-none"
+></div>
+
+
+<div class="relative z-10">
+
+
+<p
+  class="text-xs font-medium text-accent tracking-widest uppercase mb-4"
+>
+Interested in my work?
+</p>
+
+
+<h2
+  class="font-display font-bold text-3xl md:text-4xl text-white mb-4"
+>
+Let's connect.
+</h2>
+
+
+<p
+  class="text-zinc-400 max-w-md mx-auto mb-8"
+>
+I'm interested in opportunities involving embedded systems,
+hardware, electronics, robotics, and power systems.
+</p>
+
+
+<a
+  class="inline-flex items-center gap-2 btn-primary bg-accent text-white font-medium px-8 py-3.5 rounded-full hover:bg-accent-light transition-colors"
+  href="index.html#contact"
+>
+Contact me →
+</a>
+
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
+
+<footer
+  class="border-t border-zinc-100 dark:border-zinc-900"
+>
+
+
+<div
+  class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4"
+>
+
+
+<p class="text-sm text-zinc-400">
+
+© <span id="yr"></span>
+Junior Mauiango. All rights reserved.
+
+</p>
+
+
+<p class="text-xs text-zinc-500">
+
+Built with HTML, CSS, and JavaScript.
+
+</p>
+
+
+</div>
+
+</footer>
+
+
+<script defer src="script.js"></script>
+
+
+</body>
+
+</html>

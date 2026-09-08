@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth dark" lang="en">
+
+<head>
+
+<meta charset="utf-8"/>
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+<meta
+  content="Analog fire detection circuit project by Junior Mauiango using temperature and light-dependent sensing with analog threshold detection."
+  name="description"
+/>
+
+<meta content="Junior Mauiango" name="author"/>
+
+<title>Analog Fire Detection Circuit — Junior Mauiango</title>
+
+
+<link
+  href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&display=swap"
+  rel="stylesheet"
+/>
+
+<link href="style.css" rel="stylesheet"/>
+
+
+<script>
+
+try {
+
+  const savedTheme =
+    localStorage.getItem("theme");
+
+  if (savedTheme !== "light") {
+
+    document.documentElement
+      .classList.add("dark");
+
+  } else {
+
+    document.documentElement
+      .classList.remove("dark");
+
+  }
+
+} catch (error) {
+
+  document.documentElement
+    .classList.add("dark");
+
+}
+
+</script>
+
+</head>
+
+
+<body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-body antialiased">
+
+
+<!-- READING PROGRESS -->
+
+<div
+  aria-label="Reading progress"
+  aria-valuemax="100"
+  aria-valuemin="0"
+  class="progress-bar"
+  role="progressbar"
+></div>
+
+
+<!-- ═══════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════ -->
+
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+
+
+<nav
+  aria-label="Main navigation"
+  class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between"
+>
+
+
+<a
+  class="font-display font-bold text-xl tracking-tight z-10"
+  href="index.html"
+>
+
+<span class="text-zinc-900 dark:text-white">
+Junior
+</span>
+
+<span class="text-accent">
+Mauiango
+</span>
+
+</a>
+
+
+<ul
+  class="hidden md:flex items-center gap-8 text-sm font-medium"
+  role="list"
+>
+
+
+<li>
+
+<a
+  class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
+  href="index.html#skills"
+>
+Skills
+</a>
+
+</li>
+
+
+<li>
+
+<a
+  class="nav-link text-accent font-medium"
+  href="projects.html"
+>
+Projects
+</a>
+
+</li>
+
+
+<li>
+
+<a
+  class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
+  href="index.html#experience"
+>
+Experience
+</a>
+
+</li>
+
+
+<li>
+
+<a
+  class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
+  href="index.html#about"
+>
+About
+</a>
+
+</li>
+
+
+<li>
+
+<a
+  class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
+  href="index.html#contact"
+>
+Contact
+</a>
+
+</li>
+
+
+</ul>
+
+
+<div class="flex items-center gap-3">
+
+
+<button
+  aria-label="Toggle color theme"
+  class="w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+>
+
+
+<svg
+  class="w-4 h-4"
+  fill="none"
+  stroke="currentColor"
+  viewBox="0 0 24 24"
+>
+
+<path
+  d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+></path>
+
+</svg>
+
+
+<svg
+  class="w-4 h-4"
+  fill="none"
+  stroke="currentColor"
+  viewBox="0 0 24 24"
+>
+
+<path
+  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+></path>
+
+</svg>
+
+
+</button>
+
+
+<a
+  class="hidden md:inline-flex items-center gap-2 btn-primary bg-accent text-white text-sm font-medium px-5 py-2 rounded-full hover:bg-accent-light transition-colors"
+  href="index.html#contact"
+>
+Contact me →
+</a>
+
+
+<button
+  aria-label="Toggle menu"
+  class="md:hidden w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800"
+>
+
+
+<svg
+  class="w-4 h-4"
+  fill="none"
+  stroke="currentColor"
+  viewBox="0 0 24 24"
+>
+
+<path
+  d="M4 6h16M4 12h16M4 18h16"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+></path>
+
+</svg>
+
+
+<svg
+  class="w-4 h-4"
+  fill="none"
+  stroke="currentColor"
+  viewBox="0 0 24 24"
+>
+
+<path
+  d="M6 18L18 6M6 6l12 12"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+></path>
+
+</svg>
+
+
+</button>
+
+
+</div>
+
+</nav>
+
+
+<!-- MOBILE MENU -->
+
+<div
+  class="md:hidden bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-900"
+>
+
+
+<ul class="flex flex-col px-6 py-4 gap-4 text-sm font-medium">
+
+
+<li>
+
+<a
+  class="block text-zinc-700 dark:text-zinc-300"
+  href="index.html#skills"
+>
+Skills
+</a>
+
+</li>
+
+
+<li>
+
+<a
+  class="block text-accent font-medium"
+  href="projects.html"
+>
+Projects
+</a>
+
+</li>
+
+
+<li>
+
+<a
+  class="block text-zinc-700 dark:text-zinc-300"
+  href="index.html#experience"
+>
+Experience
+</a>
+
+</li>
+
+
+<li>
+
+<a
+  class="block text-zinc-700 dark:text-zinc-300"
+  href="index.html#about"
+>
+About
+</a>
+
+</li>
+
+
+<li>
+
+<a
+  class="block text-zinc-700 dark:text-zinc-300"
+  href="index.html#contact"
+>
+Contact
+</a>
+
+</li>
+
+
+</ul>
+
+</div>
+
+
+</header>
+
+
+<main>
+
+
+<article>
+
+
+<!-- ═══════════════════════════════════════
+     PROJECT HEADER
+═══════════════════════════════════════ -->
+
+<header class="pt-32 pb-10 max-w-4xl mx-auto px-6">
+
+
+<a
+  class="inline-flex items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400 hover:text-accent transition-colors mb-8"
+  href="projects.html"
+>
+← Back to projects
+</a>
+
+
+<div class="flex flex-wrap items-center gap-3 mb-6">
+
+
+<span
+  class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full"
+>
+Analog Electronics
+</span>
+
+
+<span
+  class="text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-2.5 py-1 rounded-full"
+>
+Sensor Interface
+</span>
+
+
+<span
+  class="text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-2.5 py-1 rounded-full"
+>
+Threshold Detection
+</span>
+
+
+<span
+  class="text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-2.5 py-1 rounded-full"
+>
+Breadboard Prototype
+</span>
+
+
+</div>
+
+
+<h1
+  class="reveal font-display font-bold text-4xl md:text-5xl lg:text-6xl text-zinc-900 dark:text-white leading-tight mb-6"
+>
+Analog Fire Detection Circuit
+</h1>
+
+
+<p
+  class="reveal d1 text-xl text-zinc-500 dark:text-zinc-400 leading-relaxed mb-10 max-w-3xl"
+>
+
+An analog sensing prototype that combined temperature and
+light-dependent inputs to detect selected environmental conditions
+and trigger an alarm response without using a microcontroller.
+
+</p>
+
+
+<div
+  class="reveal d2 grid grid-cols-2 md:grid-cols-4 gap-4 py-8 border-t border-b border-zinc-100 dark:border-zinc-900"
+>
+
+
+<div>
+
+<p class="text-xs text-zinc-400 uppercase tracking-widest mb-1">
+Control
+</p>
+
+<p class="font-medium text-zinc-900 dark:text-white text-sm">
+Analog
+</p>
+
+</div>
+
+
+<div>
+
+<p class="text-xs text-zinc-400 uppercase tracking-widest mb-1">
+Heat Sensor
+</p>
+
+<p class="font-medium text-zinc-900 dark:text-white text-sm">
+Thermistor
+</p>
+
+</div>
+
+
+<div>
+
+<p class="text-xs text-zinc-400 uppercase tracking-widest mb-1">
+Optical Input
+</p>
+
+<p class="font-medium text-zinc-900 dark:text-white text-sm">
+Photoresistor
+</p>
+
+</div>
+
+
+<div>
+
+<p class="text-xs text-zinc-400 uppercase tracking-widest mb-1">
+Year
+</p>
+
+<p class="font-medium text-zinc-900 dark:text-white text-sm">
+2025
+</p>
+
+</div>
+
+
+</div>
+
+
+</header>
+
+
+<!-- ═══════════════════════════════════════
+     HERO IMAGE
+═══════════════════════════════════════ -->
+
+<div class="max-w-5xl mx-auto px-6 mb-16">
+
+
+<div class="reveal project-media">
+
+
+<div class="photo-frame rounded-3xl overflow-hidden">
+
+
+<img
+  alt="Analog fire detection circuit assembled on breadboards"
+  loading="eager"
+  src="fire-detector.jpg"
+/>
+
+
+</div>
+
+
+<p class="img-caption">
+Breadboard prototype of the analog fire-detection circuit.
+</p>
+
+
+</div>
+
+
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     QUICK STATS
+═══════════════════════════════════════ -->
+
+<div class="max-w-4xl mx-auto px-6 mb-16">
+
+
+<div class="reveal grid grid-cols-2 md:grid-cols-4 gap-4">
+
+
+<div
+  class="stat-card bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-5 pl-6"
+>
+
+
+<p class="font-display font-bold text-3xl text-accent">
+0
+</p>
+
+<p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+Microcontrollers
+</p>
+
+
+</div>
+
+
+<div
+  class="stat-card bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-5 pl-6"
+>
+
+
+<p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">
+2
+</p>
+
+<p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+Sensing inputs
+</p>
+
+
+</div>
+
+
+<div
+  class="stat-card bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-5 pl-6"
+>
+
+
+<p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">
+Heat
+</p>
+
+<p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+Thermistor input
+</p>
+
+
+</div>
+
+
+<div
+  class="stat-card bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-5 pl-6"
+>
+
+
+<p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">
+Light
+</p>
+
+<p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+Photoresistor input
+</p>
+
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     PROJECT OVERVIEW
+═══════════════════════════════════════ -->
+
+<div class="max-w-3xl mx-auto px-6 pb-4 prose-cs">
+
+
+<h2>Project overview</h2>
+
+
+<p>
+
+This project focused on building a basic fire-detection prototype using
+analog electronics rather than programmable control.
+
+</p>
+
+
+<p>
+
+The circuit used two separate environmental inputs. A thermistor
+responded to changes in temperature, while a light-dependent resistor
+provided an optical input that could be changed by reducing the amount
+of light reaching the sensor.
+
+</p>
+
+
+<p>
+
+During testing, covering the photoresistor by hand was used as a
+simple way to reproduce a darker optical condition and observe how the
+sensor stage responded. This provided a practical way to test the
+optical portion of the circuit without using actual smoke.
+
+</p>
+
+
+<p>
+
+The sensor signals were processed through analog circuitry and
+compared against selected thresholds. When the input conditions crossed
+the desired trigger level, the warning output activated.
+
+</p>
+
+
+<h2>Temperature sensing</h2>
+
+
+<p>
+
+The temperature-detection stage used a thermistor whose resistance
+changed as its temperature changed.
+
+</p>
+
+
+<p>
+
+By incorporating the thermistor into a resistive sensing network, its
+change in resistance produced a corresponding change in voltage. This
+voltage could then be evaluated by the following analog stages.
+
+</p>
+
+
+<p>
+
+This provided a simple method of converting a physical temperature
+change into an electrical signal that the rest of the circuit could
+process.
+
+</p>
+
+
+<h2>Optical sensing</h2>
+
+
+<p>
+
+The second sensing stage used a light-dependent resistor, or
+photoresistor.
+
+</p>
+
+
+<p>
+
+The resistance of the photoresistor changes according to the amount
+of light reaching its surface. This allowed the circuit to respond to
+changes in illumination.
+
+</p>
+
+
+<p>
+
+For testing, the sensor could be covered by hand to create a darker
+condition. The goal was not to claim direct smoke measurement, but to
+demonstrate how an optical sensor could provide a second independent
+input to an analog detection system.
+
+</p>
+
+
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     SIGNAL FLOW
+═══════════════════════════════════════ -->
+
+<div class="max-w-5xl mx-auto px-6 my-12">
+
+
+<div class="reveal grid md:grid-cols-4 gap-4">
+
+
+<div
+  class="bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800"
+>
+
+
+<p class="text-xs font-medium text-accent tracking-widest uppercase mb-3">
+01
+</p>
+
+
+<h3
+  class="font-display font-bold text-zinc-900 dark:text-white mb-2"
+>
+Sense
+</h3>
+
+
+<p
+  class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed"
+>
+
+The thermistor and photoresistor respond to environmental changes.
+
+</p>
+
+
+</div>
+
+
+<div
+  class="bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800"
+>
+
+
+<p class="text-xs font-medium text-accent tracking-widest uppercase mb-3">
+02
+</p>
+
+
+<h3
+  class="font-display font-bold text-zinc-900 dark:text-white mb-2"
+>
+Convert
+</h3>
+
+
+<p
+  class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed"
+>
+
+Changes in sensor resistance are converted into voltage signals.
+
+</p>
+
+
+</div>
+
+
+<div
+  class="bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800"
+>
+
+
+<p class="text-xs font-medium text-accent tracking-widest uppercase mb-3">
+03
+</p>
+
+
+<h3
+  class="font-display font-bold text-zinc-900 dark:text-white mb-2"
+>
+Compare
+</h3>
+
+
+<p
+  class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed"
+>
+
+Analog threshold circuitry determines whether the input has reached
+the selected trigger level.
+
+</p>
+
+
+</div>
+
+
+<div
+  class="bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800"
+>
+
+
+<p class="text-xs font-medium text-accent tracking-widest uppercase mb-3">
+04
+</p>
+
+
+<h3
+  class="font-display font-bold text-zinc-900 dark:text-white mb-2"
+>
+Alert
+</h3>
+
+
+<p
+  class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed"
+>
+
+The output stage activates when the detection condition is reached.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     ANALOG DESIGN
+═══════════════════════════════════════ -->
+
+<div class="max-w-3xl mx-auto px-6 pb-4 prose-cs">
+
+
+<h2>Analog threshold detection</h2>
+
+
+<p>
+
+Because the project did not use software, the decision to activate an
+alarm had to be made entirely with analog circuitry.
+
+</p>
+
+
+<p>
+
+The sensor voltages were processed through analog stages that compared
+their values against selected reference levels. Once the sensor signal
+crossed the desired threshold, the circuit changed state and activated
+the output.
+
+</p>
+
+
+<p>
+
+This made the project a useful exercise in understanding how an analog
+system can implement decision-making behavior that would often be
+handled by conditional statements in embedded software.
+
+</p>
+
+
+<h2>Adjustable sensitivity</h2>
+
+
+<p>
+
+The breadboard implementation included adjustable components that
+allowed the switching thresholds of the sensing stages to be tuned
+during testing.
+
+</p>
+
+
+<p>
+
+This was useful because environmental conditions and component
+tolerances could affect the actual sensor voltage. Being able to tune
+the reference level made it easier to test and adjust the behavior of
+the prototype.
+
+</p>
+
+
+<h2>Why use two sensing methods?</h2>
+
+
+<p>
+
+Using both temperature and optical sensing demonstrated how multiple
+types of sensor information can be incorporated into the same
+detection system.
+
+</p>
+
+
+<p>
+
+A temperature sensor responds to heat, while an optical sensor reacts
+to changes in the amount of light reaching it. Each measurement
+captures a different environmental condition.
+
+</p>
+
+
+<p>
+
+Although this project was an educational prototype rather than a
+commercial fire alarm, combining multiple sensor inputs provided useful
+experience working with different analog sensing methods in one system.
+
+</p>
+
+
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     DESIGN NOTE
+═══════════════════════════════════════ -->
+
+<div class="max-w-4xl mx-auto px-6 my-12">
+
+
+<div
+  class="reveal bg-zinc-900 dark:bg-zinc-800 rounded-3xl p-8 md:p-10 relative overflow-hidden"
+>
+
+
+<div
+  class="absolute top-0 right-0 w-56 h-56 bg-accent/20 rounded-full blur-3xl pointer-events-none"
+></div>
+
+
+<div class="relative z-10">
+
+
+<p
+  class="text-xs font-medium text-accent tracking-widest uppercase mb-4"
+>
+Design Focus
+</p>
+
+
+<h3
+  class="font-display font-bold text-2xl md:text-3xl text-white mb-4"
+>
+Turning physical conditions into circuit decisions.
+</h3>
+
+
+<p
+  class="text-zinc-400 leading-relaxed max-w-2xl"
+>
+
+The main engineering challenge was translating changes in temperature
+and light into reliable electrical signals, setting useful switching
+thresholds, and combining the sensing stages into an analog warning
+system.
+
+</p>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     TESTING
+═══════════════════════════════════════ -->
+
+<div class="max-w-3xl mx-auto px-6 pb-4 prose-cs">
+
+
+<h2>Testing the prototype</h2>
+
+
+<p>
+
+The circuit was tested directly on the breadboard by changing the
+conditions around the sensors and observing the output response.
+
+</p>
+
+
+<p>
+
+The thermistor could be exposed to a warmer condition to observe how
+the temperature-sensing stage responded.
+
+</p>
+
+
+<p>
+
+For the optical stage, covering the photoresistor reduced the light
+reaching the device and provided an easy way to verify whether the
+circuit responded to the intended change in sensor resistance.
+
+</p>
+
+
+<p>
+
+The adjustable thresholds were then tuned until the detection stages
+responded consistently to the intended test conditions.
+
+</p>
+
+
+<h2>Engineering challenges</h2>
+
+
+<p>
+
+One challenge was getting the sensor signals and reference voltages
+into useful ranges. Analog sensors do not provide a simple digital
+on/off output, so changes in component values and environmental
+conditions can affect how the system behaves.
+
+</p>
+
+
+<p>
+
+Breadboard wiring also required careful troubleshooting. With
+multiple analog stages connected together, an incorrect connection or
+unexpected voltage at one stage could affect the operation of the
+entire circuit.
+
+</p>
+
+
+<p>
+
+The project reinforced the importance of measuring voltages at
+different points in the circuit instead of trying to troubleshoot the
+whole system at once.
+
+</p>
+
+
+<h2>What I learned</h2>
+
+
+<p>
+
+This project strengthened my understanding of analog sensor
+interfaces, voltage dividers, threshold detection, analog signal
+processing, and breadboard prototyping.
+
+</p>
+
+
+<p>
+
+It also helped me better understand the relationship between a
+physical sensor and the electrical signal ultimately used by a
+control circuit.
+
+</p>
+
+
+<p>
+
+Compared with my microcontroller-based projects, this circuit was a
+useful reminder that sensing, decision-making, and control can all be
+implemented directly in hardware without software.
+
+</p>
+
+
+<hr/>
+
+
+<p>
+
+<em>
+
+This project was an educational analog prototype. The photoresistor
+was used to create a controllable optical input during testing and
+should not be interpreted as a validated commercial smoke-detection
+method.
+
+</em>
+
+</p>
+
+
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     TECHNOLOGY USED
+═══════════════════════════════════════ -->
+
+<section class="max-w-5xl mx-auto px-6 py-16">
+
+
+<div class="reveal">
+
+
+<p
+  class="text-xs font-medium text-accent tracking-widest uppercase mb-3"
+>
+Hardware &amp; Skills
+</p>
+
+
+<h2
+  class="font-display font-bold text-3xl text-zinc-900 dark:text-white mb-8"
+>
+Technology used
+</h2>
+
+
+<div class="flex flex-wrap gap-3">
+
+
+<span
+  class="bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 px-4 py-2 rounded-full text-sm"
+>
+Analog Circuit Design
+</span>
+
+
+<span
+  class="bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 px-4 py-2 rounded-full text-sm"
+>
+Thermistor
+</span>
+
+
+<span
+  class="bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 px-4 py-2 rounded-full text-sm"
+>
+Photoresistor
+</span>
+
+
+<span
+  class="bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 px-4 py-2 rounded-full text-sm"
+>
+Analog Signal Processing
+</span>
+
+
+<span
+  class="bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 px-4 py-2 rounded-full text-sm"
+>
+Threshold Detection
+</span>
+
+
+<span
+  class="bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 px-4 py-2 rounded-full text-sm"
+>
+Voltage Dividers
+</span>
+
+
+<span
+  class="bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 px-4 py-2 rounded-full text-sm"
+>
+Breadboard Prototyping
+</span>
+
+
+<span
+  class="bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 px-4 py-2 rounded-full text-sm"
+>
+Circuit Troubleshooting
+</span>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+</article>
+
+
+<!-- ═══════════════════════════════════════
+     MORE PROJECTS
+═══════════════════════════════════════ -->
+
+<section class="bg-zinc-50 dark:bg-zinc-900/50 py-16">
+
+
+<div class="max-w-6xl mx-auto px-6">
+
+
+<div class="flex items-center justify-between mb-14">
+
+
+<h2
+  class="font-display font-bold text-3xl text-zinc-900 dark:text-white"
+>
+More projects
+</h2>
+
+
+<a
+  class="text-sm font-medium text-accent nav-link"
+  href="projects.html"
+>
+View all →
+</a>
+
+
+</div>
+
+
+<div class="grid md:grid-cols-2 gap-6">
+
+
+<!-- 4WD VEHICLE -->
+
+<article
+  class="reveal card-h group bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors"
+>
+
+
+<a
+  class="block photo-frame w-full h-64"
+  href="car-project.html"
+>
+
+
+<img
+  alt="STM32 and Raspberry Pi 4WD vehicle"
+  loading="lazy"
+  src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=900&q=80"
+/>
+
+
+</a>
+
+
+<div class="p-6">
+
+
+<div class="mb-4">
+
+
+<span
+  class="text-xs bg-zinc-100 dark:bg-zinc-800 text-accent border border-zinc-200 dark:border-zinc-700 px-3 py-1 rounded-full"
+>
+Embedded Systems
+</span>
+
+
+</div>
+
+
+<a href="car-project.html">
+
+
+<h3
+  class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-4 group-hover:text-accent transition-colors"
+>
+STM32–Raspberry Pi 4WD Vehicle
+</h3>
+
+
+</a>
+
+
+<a
+  class="inline-flex items-center gap-2 text-sm font-medium text-accent nav-link"
+  href="car-project.html"
+>
+View project →
+</a>
+
+
+</div>
+
+
+</article>
+
+
+<!-- EV GRID RESEARCH -->
+
+<article
+  class="reveal d1 card-h group bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors"
+>
+
+
+<a
+  class="block photo-frame w-full h-64"
+  href="ev-grid-research.html"
+>
+
+
+<img
+  alt="Electrical distribution power system"
+  loading="lazy"
+  src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=900&q=80"
+/>
+
+
+</a>
+
+
+<div class="p-6">
+
+
+<div class="mb-4">
+
+
+<span
+  class="text-xs bg-zinc-100 dark:bg-zinc-800 text-accent border border-zinc-200 dark:border-zinc-700 px-3 py-1 rounded-full"
+>
+Power Systems
+</span>
+
+
+</div>
+
+
+<a href="ev-grid-research.html">
+
+
+<h3
+  class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-4 group-hover:text-accent transition-colors"
+>
+EV Grid Integration Research
+</h3>
+
+
+</a>
+
+
+<a
+  class="inline-flex items-center gap-2 text-sm font-medium text-accent nav-link"
+  href="ev-grid-research.html"
+>
+View research →
+</a>
+
+
+</div>
+
+
+</article>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     CTA
+═══════════════════════════════════════ -->
+
+<section class="py-24">
+
+
+<div class="max-w-6xl mx-auto px-6">
+
+
+<div
+  class="bg-zinc-900 dark:bg-zinc-800 rounded-3xl p-10 md:p-14 text-center relative overflow-hidden"
+>
+
+
+<div
+  class="absolute top-0 right-0 w-64 h-64 bg-accent/20 rounded-full blur-3xl pointer-events-none"
+></div>
+
+
+<div class="relative z-10">
+
+
+<p
+  class="text-xs font-medium text-accent tracking-widest uppercase mb-4"
+>
+Interested in my work?
+</p>
+
+
+<h2
+  class="font-display font-bold text-3xl md:text-4xl text-white mb-4"
+>
+Let's connect.
+</h2>
+
+
+<p
+  class="text-zinc-400 max-w-lg mx-auto mb-8"
+>
+
+I'm interested in opportunities involving embedded systems,
+hardware, electronics, robotics, power systems, and electrical
+engineering.
+
+</p>
+
+
+<a
+  class="inline-flex items-center gap-2 btn-primary bg-accent text-white font-medium px-8 py-3.5 rounded-full hover:bg-accent-light transition-colors"
+  href="index.html#contact"
+>
+Contact me →
+</a>
+
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
+
+<footer class="border-t border-zinc-100 dark:border-zinc-900">
+
+
+<div
+  class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4"
+>
+
+
+<p class="text-sm text-zinc-400">
+© <span id="year"></span> Junior Mauiango. All rights reserved.
+</p>
+
+
+<p class="text-xs text-zinc-500">
+Built with HTML, CSS, and JavaScript.
+</p>
+
+
+</div>
+
+</footer>
+
+
+<script defer src="script.js"></script>
+
+
+</body>
+
+</html>
