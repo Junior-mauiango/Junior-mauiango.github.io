@@ -9,7 +9,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
 <meta
-  content="Electric vehicle grid integration research by Junior Mauiango using MATLAB and MATPOWER to investigate V2G operation and dynamic wireless EV charging on distribution systems."
+  content="Electric vehicle grid integration research by Junior Mauiango using MATLAB and MATPOWER to study V2G operation and dynamic wireless EV charging on distribution systems."
   name="description"
 />
 
@@ -186,7 +186,7 @@ Contact me →
   viewBox="0 0 24 24"
 >
 <path
-  d="M4 6h16M4 12h16M4 18h16"
+  d="M4 6h16M4 12H16M4 18h16"
   stroke-linecap="round"
   stroke-linejoin="round"
   stroke-width="2"
@@ -307,10 +307,9 @@ Electric Vehicle Grid Integration Research
 <p
   class="reveal d1 text-xl text-zinc-500 dark:text-zinc-400 leading-relaxed mb-10 max-w-3xl"
 >
-Research investigating how large-scale electric vehicle integration
-affects distribution-grid performance, with work spanning
-Vehicle-to-Grid discharging and coordinated dynamic wireless
-EV charging using MATLAB and MATPOWER.
+Research exploring how electric vehicles interact with distribution
+systems, with work focused on Vehicle-to-Grid operation and
+grid-aware dynamic wireless EV charging using MATLAB and MATPOWER.
 </p>
 
 
@@ -323,7 +322,7 @@ EV charging using MATLAB and MATPOWER.
 Network
 </p>
 <p class="font-medium text-zinc-900 dark:text-white text-sm">
-IEEE 33-Bus
+IEEE 33-Bus System
 </p>
 </div>
 
@@ -338,10 +337,10 @@ MATLAB / MATPOWER
 
 <div>
 <p class="text-xs text-zinc-400 uppercase tracking-widest mb-1">
-Resolution
+Analysis
 </p>
 <p class="font-medium text-zinc-900 dark:text-white text-sm">
-5-Minute Steps
+Time-Series Power Flow
 </p>
 </div>
 
@@ -391,42 +390,54 @@ Research conducted in the Power Quality &amp; Resilience Lab at the University o
 <div class="reveal grid grid-cols-2 md:grid-cols-4 gap-4">
 
 <div class="stat-card bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-5 pl-6">
-<p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">
-33
+
+<p class="font-display font-bold text-xl text-zinc-900 dark:text-white">
+IEEE 33-Bus
 </p>
+
 <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
-Distribution buses
+Distribution network model
 </p>
+
 </div>
 
 
 <div class="stat-card bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-5 pl-6">
-<p class="font-display font-bold text-3xl text-accent">
-288
+
+<p class="font-display font-bold text-xl text-accent">
+24-Hour
 </p>
+
 <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
-Time steps per day
+Time-series simulation
 </p>
+
 </div>
 
 
 <div class="stat-card bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-5 pl-6">
-<p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">
-700
+
+<p class="font-display font-bold text-xl text-zinc-900 dark:text-white">
+5-Minute
 </p>
+
 <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
-EVs in V2G study
+Simulation intervals
 </p>
+
 </div>
 
 
 <div class="stat-card bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-5 pl-6">
-<p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">
-30%
+
+<p class="font-display font-bold text-xl text-zinc-900 dark:text-white">
+EV Models
 </p>
+
 <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
-V2G participation
+Synthetic EV scenarios
 </p>
+
 </div>
 
 </div>
@@ -443,69 +454,72 @@ V2G participation
 <h2>Research overview</h2>
 
 <p>
-As electric vehicle adoption increases, distribution networks must
-support a growing amount of power being transferred between vehicles
-and the grid. My research focuses on understanding how these new loads
-and distributed energy resources affect voltage, power flow, system
-losses, and network loading.
+As electric vehicle adoption grows, distribution systems have to
+support new patterns of electricity demand and, in some cases,
+bidirectional power flow between vehicles and the grid. My research
+looks at how these changes affect the operation of a distribution
+network.
 </p>
 
 <p>
-I use MATLAB and MATPOWER to build time-series simulations of
-distribution systems under different EV integration strategies.
-Rather than evaluating the grid at only one operating point, the
-simulations model changing conditions throughout a full 24-hour day.
+I use MATLAB and MATPOWER to build time-series power-flow simulations
+and study how EV activity affects bus voltage, power losses, branch
+loading, and other grid conditions throughout the day.
 </p>
 
 <p>
-My work has included two related areas of EV-grid integration:
-Vehicle-to-Grid operation, where parked EVs can discharge stored
-energy back into the distribution system, and coordinated dynamic
-wireless charging, where EV charging requests must be managed while
-vehicles receive energy on the move.
+My work has included two related areas: Vehicle-to-Grid operation,
+where EVs can return stored energy to the electrical system, and
+dynamic wireless charging, where EV charging demand has to be
+coordinated with the condition of the distribution network.
 </p>
 
 
 <h2>The distribution-grid model</h2>
 
 <p>
-The research uses the IEEE 33-bus radial distribution network as the
-main test system. The network provides a controlled environment for
-studying how changing loads and EV power injections affect different
-locations across a distribution feeder.
+The research uses the IEEE 33-bus radial distribution system as a test
+network. Using a standard distribution model gives me a consistent
+system for comparing different EV-grid scenarios and studying how
+changes at different parts of the feeder affect overall operation.
 </p>
 
 <p>
-For the V2G study, a daily load profile was applied to the network to
-represent changing electricity demand. The simulation then progressed
-through 288 five-minute intervals covering an entire 24-hour period.
-At every interval, the bus loads were updated and a MATPOWER power
-flow was executed.
+I developed MATLAB/MATPOWER simulations that evaluate the network
+across a full day rather than looking at only one operating point.
+The simulations run at five-minute intervals so changes in demand,
+EV activity, and network conditions can be observed over time.
 </p>
 
 <p>
-From each power-flow solution, I recorded quantities such as bus
-voltage magnitude, branch power flow, real-power losses, and network
-loading. This allowed changes to be studied across both location and
-time rather than looking only at total system demand.
+At each point in the simulation, MATPOWER is used to solve the power
+flow. I then analyze results such as bus-voltage profiles, power
+losses, branch loading, and how those quantities change as EV activity
+changes.
 </p>
 
 
 <h2>Vehicle-to-Grid research</h2>
 
 <p>
-Vehicle-to-Grid technology allows an electric vehicle to operate as
-more than a conventional electrical load. With bidirectional power
-flow, energy stored in the EV battery can be returned to the grid when
-the vehicle is connected and available.
+Vehicle-to-Grid, or V2G, allows electric vehicles to send stored
+battery energy back into the electrical grid when they are connected
+and available. This means EVs can act as distributed energy resources
+instead of only behaving as electrical loads.
 </p>
 
 <p>
-I investigated how this behavior could affect a distribution network
-during periods of high electricity demand. The V2G study compared a
-baseline IEEE 33-bus system against a scenario where a portion of a
-synthetic EV fleet injected power back into the network during the
-evening peak period.
+One part of my research studies how V2G affects a distribution system
+during periods of higher electricity demand. I compare normal grid
+operation with scenarios where EVs are able to provide power back to
+the network.
+</p>
+
+<p>
+The goal is not simply to determine whether V2G can provide power.
+The more important question is how that power changes conditions
+throughout the feeder and whether those changes create benefits or
+new operating problems.
 </p>
 
 </div>
@@ -529,13 +543,12 @@ evening peak period.
 </p>
 
 <h3 class="font-display font-bold text-zinc-900 dark:text-white mb-2">
-Generate the EV fleet
+Model EV activity
 </h3>
 
 <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
-A synthetic fleet of 700 EVs was distributed across the network with
-randomized availability characteristics to represent varying vehicle
-behavior.
+Synthetic EV scenarios are used to represent changing vehicle
+availability and activity across the distribution system.
 </p>
 
 </div>
@@ -550,13 +563,13 @@ behavior.
 </p>
 
 <h3 class="font-display font-bold text-zinc-900 dark:text-white mb-2">
-Enable V2G participation
+Apply V2G operation
 </h3>
 
 <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
-Thirty percent of the fleet was designated as V2G-capable. Available
-vehicles injected power into their connected buses during the evening
-peak period.
+EV power injection is introduced into the network so its effect on
+distribution-system operation can be compared with normal grid
+conditions.
 </p>
 
 </div>
@@ -571,13 +584,12 @@ peak period.
 </p>
 
 <h3 class="font-display font-bold text-zinc-900 dark:text-white mb-2">
-Run power flow
+Analyze the grid
 </h3>
 
 <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
-At every five-minute interval, MATPOWER solved the updated network and
-the resulting voltages, branch flows, losses, and overload conditions
-were recorded.
+MATPOWER solves the network over time and I analyze voltage, losses,
+power flow, and network loading to understand the effect of V2G.
 </p>
 
 </div>
@@ -590,93 +602,90 @@ were recorded.
 
 <div class="max-w-3xl mx-auto px-6 pb-4 prose-cs">
 
-<h2>Modeling realistic EV behavior</h2>
+<h2>Time-series EV modeling</h2>
 
 <p>
-The V2G simulation used a synthetic fleet rather than assuming that
-every vehicle behaved identically. Vehicles were assigned different
-arrival times, dwell durations, locations, and discharge capabilities.
-This created changing V2G availability throughout the simulation.
+EV behavior changes throughout the day, so the simulation does not
+treat every vehicle as being available at the same time. Synthetic EV
+activity is used to create changing conditions across the network
+during the simulation.
 </p>
 
 <p>
-For this specific study, charging was intentionally excluded from the
-V2G scenario. The purpose was to isolate the effect of EV power
-injection and directly compare distribution-system behavior with and
-without V2G discharging.
+This makes it possible to study V2G as a time-dependent grid problem.
+The amount and location of EV power interacting with the feeder can
+change while the underlying electricity demand is also changing.
 </p>
 
 <p>
-During the defined evening peak period, V2G-capable vehicles that were
-available at their assigned buses reduced the local net demand by
-injecting power into the grid. Once the V2G period ended, the system
-returned to its normal baseline behavior.
+I use these simulations to compare how the same distribution system
+behaves under different EV-grid operating conditions without exposing
+the detailed research methods or unpublished model parameters.
 </p>
 
 
-<h2>What I measured</h2>
+<h2>What I analyze</h2>
 
 <p>
-The simulation tracked several electrical quantities to evaluate both
-the potential benefits and the unintended consequences of V2G.
+The simulations produce several electrical measurements that help me
+understand how EV integration affects the distribution network.
 </p>
 
 <ul>
 
 <li>
 <strong>Bus voltage:</strong>
-voltage magnitude was tracked across the distribution network to
-identify undervoltage and overvoltage conditions.
+I analyze voltage profiles across the feeder to see how EV activity
+changes voltage conditions at different locations.
 </li>
 
 <li>
-<strong>Real-power losses:</strong>
-branch losses were calculated at each simulation interval.
+<strong>Power losses:</strong>
+I evaluate how different EV-grid scenarios affect real-power losses
+throughout the distribution network.
 </li>
 
 <li>
 <strong>Branch power flow:</strong>
-power flowing through individual sections of the feeder was monitored
-as V2G changed the direction and magnitude of network power flow.
+I study how EV charging and discharging change the amount and
+direction of power moving through different parts of the feeder.
 </li>
 
 <li>
-<strong>Thermal loading:</strong>
-branch flows were compared against the assumed network rating to
-identify overload conditions.
+<strong>Network loading:</strong>
+I monitor how EV activity changes loading across the distribution
+system and where additional grid stress may appear.
 </li>
 
 <li>
 <strong>Time-dependent behavior:</strong>
-all measurements were stored across the 24-hour simulation so that
-peak-demand behavior could be compared against off-peak conditions.
+I compare these measurements throughout the day instead of relying on
+a single power-flow snapshot.
 </li>
 
 </ul>
 
 
-<h2>What the V2G simulation showed</h2>
+<h2>What the V2G simulations showed</h2>
 
 <p>
-The baseline simulation showed the greatest voltage stress during the
-evening demand peak. Without V2G, the lowest observed bus voltage
-reached approximately 0.92 per unit.
+The simulations showed that V2G can help improve low-voltage
+conditions on a distribution feeder during periods of higher
+electricity demand.
 </p>
 
 <p>
-Introducing V2G changed that behavior significantly. During the
-discharge period, local EV power injection reduced the voltage drop
-experienced at many buses. The minimum voltage during peak operation
-increased, showing that distributed EV energy storage can provide
-voltage support when the network is heavily loaded.
+However, the results also showed that simply increasing the amount of
+power supplied by EVs does not automatically improve overall grid
+performance. Too much uncoordinated power injection can create new
+problems, including overvoltage and increased loading in parts of the
+network.
 </p>
 
 <p>
-The results also exposed an important limitation: more V2G power was
-not automatically better. In parts of the network, the additional
-injection pushed voltage well above its normal operating range, with
-the simulation reaching approximately 1.35 per unit in the most
-extreme case.
+This showed me that V2G needs to be coordinated with the condition of
+the grid rather than simply allowing every available vehicle to
+discharge whenever power is needed.
 </p>
 
 </div>
@@ -703,15 +712,15 @@ Key Finding
 </p>
 
 <h3 class="font-display font-bold text-2xl md:text-3xl text-white mb-4">
-V2G can support the grid — but it must be coordinated.
+V2G can support the grid — but it has to be coordinated.
 </h3>
 
 <p class="text-zinc-400 leading-relaxed max-w-2xl">
-EV discharging improved low-voltage conditions during peak demand,
-but excessive distributed injection also created overvoltage,
-increased losses on some branches, and produced network overloads.
-The results reinforced the importance of controlling when, where,
-and how much power EVs return to the grid.
+The simulations showed that EV discharging can improve voltage
+conditions during periods of higher demand. At the same time,
+uncoordinated power injection can create overvoltage and increase
+network loading. The results showed why V2G control has to consider
+the condition of the distribution system.
 </p>
 
 </div>
@@ -723,71 +732,71 @@ and how much power EVs return to the grid.
 
 <div class="max-w-3xl mx-auto px-6 pb-4 prose-cs">
 
-<h2>Power-loss and network-loading tradeoffs</h2>
+<h2>Looking beyond a single grid metric</h2>
 
 <p>
-V2G also changed the distribution of real-power losses throughout the
-network. Under baseline operation, power primarily flowed from the
-substation toward downstream loads. When EVs began injecting power at
-different buses, the magnitude and direction of those flows changed.
+One of the important things I found through this work is that improving
+one part of grid performance does not necessarily improve everything
+else.
 </p>
 
 <p>
-In the simulated V2G case, some branches experienced substantially
-higher losses during the discharge period. Several branches also
-exceeded the assumed thermal limit, while the baseline simulation did
-not produce sustained overloads.
+For example, EV power injection can help support voltage in one part
+of the network while changing power flow and loading somewhere else.
+That means V2G has to be evaluated as a system-level problem rather
+than focusing on only one measurement.
 </p>
 
 <p>
-This was an important result because it showed that improving one grid
-metric does not guarantee improvement everywhere else. V2G improved
-the low-voltage problem, but uncontrolled or excessive discharge
-could create a different set of operating problems.
+This became one of the main ideas behind my research: EVs can provide
+useful flexibility to the electrical grid, but the way they are
+coordinated matters just as much as the amount of power they can
+provide.
 </p>
 
 
 <h2>Dynamic wireless EV charging</h2>
 
 <p>
-Another part of my EV-grid research examines dynamic wireless
+Another part of my EV-grid research looks at dynamic wireless
 charging, where electric vehicles receive energy while traveling
-through an equipped charging region. From the distribution-grid
-perspective, this creates a different problem from conventional
-charging because multiple vehicles may request power while the feeder
-is already supporting other loads.
+through an equipped charging region.
 </p>
 
 <p>
-My work focuses on the grid-control side of the problem rather than
-the physical design of wireless power-transfer coils. I model the
-charging demand in MATLAB/MATPOWER and investigate how charging
-requests can be coordinated to prevent unacceptable distribution
-voltage conditions.
-</p>
-
-
-<h2>Priority-based charging control</h2>
-
-<p>
-Instead of allowing every requesting EV to charge simultaneously, the
-control strategy evaluates which vehicles should be admitted based on
-charging priority and the electrical condition of the feeder.
+My work focuses on the distribution-grid side of the problem rather
+than the physical design of wireless power-transfer hardware. I use
+MATLAB and MATPOWER to study how additional EV charging demand affects
+the feeder and how charging can be coordinated with grid conditions.
 </p>
 
 <p>
-Vehicles entering the charging region generate charging requests.
-Those requests are ranked according to their charging need. The
-highest-priority vehicles are considered first, but charging is only
-accepted while the resulting feeder voltage remains within the
-defined operating constraint.
+Because several vehicles may need energy while the distribution system
+is already supporting other loads, the grid cannot always treat every
+charging request independently. The charging strategy therefore has
+to consider both EV demand and the electrical condition of the
+network.
+</p>
+
+
+<h2>Grid-aware charging control</h2>
+
+<p>
+I worked on a grid-aware charging approach that manages EV charging
+demand based on the condition of the distribution feeder.
 </p>
 
 <p>
-As the system approaches its voltage limit, lower-priority requests
-are delayed rather than adding additional load to the feeder. This
-creates a direct connection between individual EV charging decisions
-and distribution-system operating conditions.
+The goal is to allow EVs to receive energy while keeping the network
+within acceptable operating conditions. When additional charging would
+place too much stress on the feeder, some charging demand can be
+delayed rather than adding all of the requested load at once.
+</p>
+
+<p>
+This allowed me to study how EV charging decisions and power-system
+conditions can be connected through a control strategy without
+treating the transportation load separately from the electrical grid.
 </p>
 
 </div>
@@ -805,65 +814,88 @@ and distribution-system operating conditions.
 <div
   class="flex gap-5 bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800"
 >
+
 <div class="step-badge shrink-0 mt-0.5">1</div>
+
 <div>
+
 <p class="font-display font-bold text-zinc-900 dark:text-white mb-1">
-EV enters charging region
+EV charging demand changes
 </p>
+
 <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
-The vehicle requests power from the dynamic wireless charging system.
+Vehicles create changing charging demand as they move through the
+dynamic charging system.
 </p>
+
 </div>
+
 </div>
 
 
 <div
   class="flex gap-5 bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800"
 >
+
 <div class="step-badge shrink-0 mt-0.5">2</div>
+
 <div>
+
 <p class="font-display font-bold text-zinc-900 dark:text-white mb-1">
-Charging requests are prioritized
+Grid conditions are evaluated
 </p>
+
 <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
-Vehicles are ranked so that EVs with greater charging need can be
-considered before lower-priority requests.
+The distribution-system simulation is used to understand how the
+additional EV demand affects feeder conditions.
 </p>
+
 </div>
+
 </div>
 
 
 <div
   class="flex gap-5 bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800"
 >
+
 <div class="step-badge shrink-0 mt-0.5">3</div>
+
 <div>
+
 <p class="font-display font-bold text-zinc-900 dark:text-white mb-1">
-Grid condition is evaluated
+Charging is coordinated
 </p>
+
 <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
-The charging load is evaluated against the distribution network to
-determine whether another vehicle can be admitted without violating
-the feeder voltage constraint.
+Charging demand is managed so that EV energy needs can be supported
+without ignoring the operating condition of the distribution feeder.
 </p>
+
 </div>
+
 </div>
 
 
 <div
   class="flex gap-5 bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800"
 >
+
 <div class="step-badge shrink-0 mt-0.5">4</div>
+
 <div>
+
 <p class="font-display font-bold text-zinc-900 dark:text-white mb-1">
-Accept or delay the request
+System performance is analyzed
 </p>
+
 <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
-Charging continues to be allocated while the grid remains within its
-operating constraint. Lower-priority requests are delayed as the
-network approaches the voltage threshold.
+Voltage, loading, losses, and other grid measurements are analyzed to
+understand the effect of the charging strategy.
 </p>
+
 </div>
+
 </div>
 
 
@@ -877,24 +909,40 @@ network approaches the voltage threshold.
 <h2>Connecting both research areas</h2>
 
 <p>
-Although V2G and dynamic wireless charging move energy in opposite
-directions, both projects address the same broader engineering
-question: how can a distribution grid support a large population of
-electric vehicles without sacrificing reliable operation?
+V2G and dynamic wireless charging move energy in different directions,
+but both are connected by the same engineering problem: how can a
+distribution system support a growing number of electric vehicles
+without creating new grid problems?
 </p>
 
 <p>
-The V2G work demonstrates that EV batteries can become distributed
-grid resources, but also shows why their power injection must be
-coordinated. The wireless-charging work approaches the problem from
-the load side by controlling which charging requests the network can
-support.
+The V2G work looks at EVs as possible grid resources that can return
+energy to the electrical system. The wireless-charging work looks at
+EVs as changing electrical loads that need energy from the grid.
 </p>
 
 <p>
-Together, these studies have allowed me to explore EV integration as
-a power-system control problem rather than simply treating electric
-vehicles as fixed electrical loads.
+Working on both sides of the problem has helped me understand EV
+integration as more than just adding vehicle load to a power system.
+It is also a control and coordination problem involving transportation
+demand, grid conditions, and power-system operation.
+</p>
+
+
+<h2>My work</h2>
+
+<p>
+I developed the MATLAB/MATPOWER simulation framework, implemented the
+time-series power-flow analysis and EV-grid models, generated and
+analyzed simulation results, and evaluated how different EV scenarios
+affected bus voltage, power losses, and network loading.
+</p>
+
+<p>
+The research has given me hands-on experience building power-system
+simulation tools, working with distribution test systems, processing
+time-series results, and turning simulation data into engineering
+conclusions.
 </p>
 
 
@@ -903,33 +951,34 @@ vehicles as fixed electrical loads.
 <p>
 The research has involved MATLAB programming, MATPOWER power-flow
 simulation, IEEE distribution test systems, time-series modeling,
-stochastic EV behavior, load-profile modeling, voltage analysis,
-branch-loss calculations, data visualization, and interpretation of
-distribution-system operating constraints.
+synthetic EV scenarios, load-profile modeling, voltage analysis,
+power-loss calculations, network-loading analysis, data visualization,
+and interpretation of distribution-system behavior.
 </p>
 
 
 <h2>What I learned</h2>
 
 <p>
-One of the biggest lessons from this research is that grid integration
-requires looking at the entire system rather than optimizing a single
-metric. A strategy that improves voltage can simultaneously increase
-losses or overload another section of the feeder.
+One of the biggest things I learned from this research is that you
+cannot judge an EV-grid strategy using only one measurement. A change
+that helps voltage may affect losses, power flow, or network loading
+somewhere else.
 </p>
 
 <p>
-It also showed me the importance of time-series simulation. EV
-availability, electricity demand, and grid conditions are constantly
-changing, so a single power-flow snapshot cannot capture many of the
-problems that appear during a full day of operation.
+The project also showed me why time-series simulation is important.
+Electricity demand, EV activity, and grid conditions change throughout
+the day, so looking at only one power-flow condition can miss problems
+that appear at other times.
 </p>
 
 <p>
-Most importantly, the work strengthened my understanding of how
-software, control strategies, and power-system analysis can be used
-together to study emerging challenges created by transportation
-electrification.
+Most importantly, this work has helped me connect programming and
+simulation with the power-system concepts I have learned in electrical
+engineering. It has also given me experience working on a research
+problem where the answer is not known before the simulation is built
+and analyzed.
 </p>
 
 
@@ -939,9 +988,15 @@ electrification.
 <p>
 <em>
 This research is conducted through the University of Oklahoma
-Power Quality &amp; Resilience Lab under the direction of
+Power Quality &amp; Resilience Lab under the guidance of
 Dr. Paul Moses.
 </em>
+</p>
+
+<p>
+Some implementation details, model parameters, and quantitative
+results are not shown here because this work is part of ongoing
+research.
 </p>
 
 <p>
